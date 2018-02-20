@@ -1,7 +1,8 @@
 // ==UserScript==
-// @name         Youtube player control keys FIX
+// @name         Youtube key shortcuts FIX
 // @namespace    https://github.com/Calciferz
-// @version      1.0.1
+// @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/master/YoutubeKeysFix.user.js
+// @version      1.0.2
 // @description  Fix player controls Space, Left, Right, Up, Down to behave consistently after page load or clicking individual controls. Not focusing the mute button anymore.
 // @author       Calcifer
 // @license      MIT
@@ -24,65 +25,107 @@ Fixes the following awkward behaviour of Youtube player controls after clicking 
 */
 /*
 Changelog:
-1.1: support classic html5 player (#movie_player element is constructed later than userscript loaded)
+1.0.2:
+     support both classic and material design (polymer) html5 player
+     allow focusing by TAB: listen for mousedown & focus events to identify focusing by mouse
+     added css: translucent lightblue background for focused element to aid TABing
+1.0.1:
+     support classic html5 player (#movie_player element is constructed later than userscript loaded)
+     also broke material design (polymer) html5 player support
      @match *://
 1.0: support material design (polymer) html5 player
 */
 
 // Debug log
-//console.log("Youtube fix: loaded");
-//var lastFocused;
+//console.log("Youtube keys fix: loaded");
+var lastFocused, mouseDownElem;
 
-$(document).ready(function() {
-//document.addEventListener("DOMContentLoaded", function() {
-    'use strict';
+
+(function () {
+    function initPlayer() {
+        'use strict';
+        
+        // The movie player frame '#movie_player', might not be generated yet.
+        var playerElem= document.getElementById('movie_player');
+        if (playerElem) {
+            // Movie player frame (element) is focused when loading the page to get movie player keyboard controls.
+            playerElem.focus();
+            $(playerElem).attr('tabindex', 1);
+            $(playerElem).select('.caption-window').attr('tabindex', -1);
+            return true;
+        } else {
+            console.log("Youtube keys fix failed to find '#movie_player' element: not generated yet");
+        }
+    }
+    
+    
+    function onMouse(event) {
+        // While bubbling, event is sent for all parent elements, only handle the first event sent for the child.
+        if (event.target !== event.currentTarget)  return;
+        
+        // Debug feedback on mouse button event
+        console.log("Youtube keys fix: " + event.type + " ->", event.currentTarget);
+        
+        // false after released
+        mouseDownElem= event.type == 'mousedown' && event.target;
+    }
     
     function onFocus(event) {
+        // While bubbling, event is sent for all parent elements, only handle the first event sent for the child.
+        if (event.target !== event.currentTarget)  return;
+        
         // Called when a sub-element of the player gets focus (by clicking or TAB). 
         var playerElem= document.getElementById('movie_player');
-        //var playerElem= document.getElementById('player-api');
-
-        // Debug feedback on last focused element
-        //console.log("Youtube fix: " + event.type + " ->", event.target, event);
-        //if (lastFocused)   lastFocused.style.background= null;  lastFocused= event.target !== playerElem  && event.target;  if (lastFocused)  lastFocused.style.background= 'lightblue';
-        
         // Avoid infinite recursion of playerElem.focus() -> onFocus()
         if  (event.target === playerElem)  return;
-        // todo: return if focused by TAB key
         
-        // Focus the player to have proper keyboard controls
-        playerElem.focus();
+        //var stealFocus= $(mouseDownElem).closest(event.target)[0];
+        var stealFocus= ancestorOf(mouseDownElem, event.target);
+        
+        // Debug feedback on last focused element
+        console.log("Youtube keys fix: " + event.type + " ->", event.currentTarget);
+        if (lastFocused)  lastFocused.style.background= null;  lastFocused= stealFocus && event.target;  if (lastFocused)  lastFocused.style.background= 'rgba(100, 255, 100, 0.5)';
+        
+        // Focus the player if focusing the element receiving the mousedown event
+        if (stealFocus)  playerElem.focus();
     }
+    
+    function ancestorOf(sibling, ancestor) {
+        while (sibling) {
+            if (sibling === ancestor)  return true;
+            sibling= sibling.parentElement;
+        }
+    }
+    
+    
+    function chainFunc(f1, f2) {
+        return (function() {
+            if (f1)  f1.apply(this, arguments);
+            if (f2)  f2.apply(this, arguments);
+        });
+    }
+    
+    //document.addEventListener("DOMContentLoaded", function() {
+    $(document).ready(function () {
+        //console.log("Youtube keys fix: $(document).ready()");
+        // Requires jquery for .on('focusin', ...).  addEventListener('focusin', ...), addEventListener('focus', ..., true) failed to work in chromium-based Vivaldi
+        // '#player-api' is part of html source and always available, while its child '#movie_player' is generated by javascript
+        var onElem= '#player-api';
+        //var onElem= '#movie_player';
+        var selector= '#movie_player *';
+        //var selector= '*';
+        $(document).on('mousedown', selector, onMouse);
+        $(document).on('mouseup', selector, onMouse);
+        $(document).on('focus', '*', onFocus);
+        
+        $(document.head).append('<style type="text/css">:focus { background-color: rgba(120, 180, 255, 0.6) }</style>');
+        
+        // Init if '#movie_player' is created.
+        var initDone= initPlayer();
+        // Run init on onYouTubePlayerReady if '#movie_player' not yet created.
+        if (!initDone)  window.onYouTubePlayerReady= chainFunc(initPlayer, window.onYouTubePlayerReady);
+    });
 
-    // '#player-api' is in the html source available when loading userscript,
-    // while '#movie_player' is generated by javascript, happened once that it was not available when $(document).ready() was called
-    // the movie player keypress handler is registered on '#movie_player', therefore that element has to be focused
-    var playerElem= document.getElementById('movie_player');
-    if (playerElem) {
-        // Movie player frame (element) is focused when loading the page to get movie player keyboard controls.
-        playerElem.focus();
-        /* Bubble up 'focus' event from siblings:  'focusin' event (bubbling version of 'focus') supported only since:
-         Firefox 52 (March 7, 2017),
-        Chrome is reported to have document.onfocusin === undefined,
-         while supporting both 'focusin' and 'focus' with useCapture, so any method will work
-        I'm not sure if  'focus' with useCapture= true  is supported in all current and older browsers if 'focusin' is supported,
-         therefore this compatibility code:
-        */
-        //var supported= 'onfocusin' in document ? 'in' : '';
-        //console.log("Youtube fix: supported='" + supported + "'");
-        // Neither of these works in Vivaldi (chromium based) browser
-        //playerElem.addEventListener('focus' + supported, onFocus, !supported);
-        //playerElem.addEventListener('focus', onFocus, true);
-        //playerElem.addEventListener('focusin', onFocus);
-    } else {
-        console.log("Youtube fix failed to focus  #movie_player  element:  not generated yet");
-    }
-    // Requires jquery for .on('focusin', ...).  addEventListener('focusin', ...), addEventListener('focus', ..., true) failed to work in chromium-based Vivaldi
-    //$('#player-api > *').on('focusin', onFocus);
-    $('#movie_player > *').on('focusin', onFocus);
-    // '.ytp-chrome-bottom' has all the controls that should delegate focus to the player instead of getting focused themselves
-    //$('#movie_player .ytp-chrome-bottom').on('focusin', onFocus);
-    // If there are other controls outside '.ytp-chrome-bottom', use the following instead:
-    //$('#movie_player').on('focusin', onFocus);
-});
+})();
+
 
