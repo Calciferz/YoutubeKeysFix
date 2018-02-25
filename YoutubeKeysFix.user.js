@@ -1,7 +1,3 @@
-/* To test classicUI add to url:
-&disable_polymer=1
-?disable_polymer=1
-*/
 // ==UserScript==
 // @name         Youtube key shortcuts FIX
 // @namespace    https://github.com/Calciferz
@@ -17,7 +13,13 @@
 // @grant        none
 // @require      http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
-/*
+
+/* To test classicUI add to url:
+&disable_polymer=1
+?disable_polymer=1
+*/
+
+/* Description:
 Player is focused right after pageload, no need to click in player frame.
 Click outside movie frame to get standard page controls: Up, Down, Left, Right (scroll)
 Press Esc to focus player, Shift-Esc to cycle other areas.
@@ -54,8 +56,8 @@ https://www.hongkiat.com/blog/useful-youtube-keyboard-shortcuts-to-know/
 https://support.google.com/youtube/answer/7631406?hl=en
 2010: flash player?  https://www.makeuseof.com/tag/comprehensive-guide-youtube-player-keyboard-shortcuts/
 */
-/*
-Changelog:
+
+/* Changelog:
 1.0.4:
 		 Shift-Esc cycles focus through 3 page areas: videos, masthead (search), content below video
 		 Mousewheel over player ajusts volume
