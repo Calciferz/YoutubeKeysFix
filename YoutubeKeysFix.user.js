@@ -18,28 +18,33 @@
 // @require      http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
 /*
-Youtube player controls will work consistently:
-- Left (5sec backwards), Right (5sec forwards), Up (volume up), Down (volume down), Home (restart video), End (skip to end)
-  stick to this behaviour when clicking (focusing) progressbar/volume slidebars
-- , (previous frame), . (next frame)
-- 0-9 (jump to 0%-90%), C (switch closed captions/subtitles), +/- (change cc font size)  --  unaffected
-- Shift-N (next video), Shift-P (previous video)
-
-Player controls are active right after pageload, no need to click in player frame (player is focused)
-- Space (play/pause)  --  becomes global, works on the whole webpage except textboxes
-- Esc (exit fullscreen)  --  was global, now additionally switches between player and video list (page focus to be exact) when not in fullscreen
-- / (focus searchfield)
-
-Global shortcuts, unaffected:
-- F (fullscreen), M (mute), J (10sec backwards), K (play/pause), L (10sec forwards), Shift-, (speed -0.25), Shift-. (speed +0.25)
-- ENTER (push the focused button)
-
-Press Esc to focus player, Shift-Esc to cycle other areas.
+Player is focused right after pageload, no need to click in player frame.
 Click outside movie frame to get standard page controls: Up, Down, Left, Right (scroll)
+Press Esc to focus player, Shift-Esc to cycle other areas.
+Space pauses video on the whole webpage except textboxes
+
+Youtube player controls will work consistently when player is focused:
+- Left / Right (5sec backwards / forwards), Up / Down (volume up / down), Home (restart video), End (skip to end)
+  After clicking (focusing) progressbar/volume slidebars this is no longer changed: in progressbar Up / Down (jump 10 sec), in volume Left / Right (volume down / up)
+- 0-9 (jump to 0%-90%), C (switch closed captions/subtitles), +/- (change cc font size)  --  unaffected
+
+Global shortcuts:
+- Esc (exit fullscreen)  --  now additionally focuses player when not in fullscreen
+- Space (play/pause)  --  now on whole page, not only when player is focused
+Global shortcuts, unaffected:
+- F (fullscreen), M (mute)
+- K (play/pause)
+- J / L (10sec backwards / forwards)
+- , (previous frame), . (next frame)
+- Shift-, (speed -0.25), Shift-. (speed +0.25)
+- Shift-N (next video), Shift-P (previous video)
+- / (focus searchfield, only in classic ui)
+- ENTER (push the focused button)
 
 Fixes the following awkward behaviour of Youtube player controls after clicking them (making the individual control focused):
 - after clicking the mute button Space toggles mute instead of pausing
-- after clicking the volume slider Left-Right will change the volume instead of stepping the video.
+- after clicking the progressbar Up/Down will jump 10 sec in the video instead of changing the volume
+- after clicking the volume slider Left/Right will change the volume instead of jumping the video.
 - after clicking subtitle button Space will toggle subtitles
 - after clicking settings button Space will toggle settings
 
