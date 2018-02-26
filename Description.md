@@ -29,7 +29,7 @@
 - after clicking settings button Space will toggle settings
 - after clicking fullscreen button Space will toggle fullscreen
 
-#### Sources of youtube shortcut behaviour:
+#### Sources of Youtube shortcut behaviour:
 https://shortcutworld.com/Youtube-Player/win/Youtube-Player_Shortcuts
 https://www.hongkiat.com/blog/useful-youtube-keyboard-shortcuts-to-know/
 https://support.google.com/youtube/answer/7631406?hl=en
