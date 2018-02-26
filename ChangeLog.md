@@ -1,3 +1,12 @@
+1.1:
+- tested with classicUI and materialUI on chromium: Opera, Vivaldi, Chrome, gecko: Firefox; Edge-Win10? won't test
+  - in Firefox without the userscript: 'F' fails to go fullscreen if focus is outside player
+- materialUI: hide focus with .no-focus-outline after clicking, show after Tab and Shift-Esc
+- focus player after pageload only on watch page, not on channel page
+- focusPlayer(): scroll player into view by focusing it first
+- handleEsc(): check for fullscreen, don't consume event if focusPlayer failed (classicUI has this builtin)
+- comment cleanup
+
 1.0.4:
 - Shift-Esc cycles focus through 3 page areas: videos, masthead (search), content below video
 - Mousewheel over player ajusts volume
