@@ -1,4 +1,5 @@
 1.1.1:
+- PageUp/Down redirected to page scroll
 
 1.1:
 - tested with classicUI and materialUI on chromium: Opera, Vivaldi, Chrome, gecko: Firefox; Edge-Win10? won't test
