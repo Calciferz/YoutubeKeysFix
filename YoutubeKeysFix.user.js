@@ -322,7 +322,7 @@ a.yt-simple-endpoint.ytd-compact-video-renderer { margin-top: 3px; }\n\
         if (document.getElementById('yt-masthead-container'))  $(document.head).append('<style name="yt-fix-classicUI" type="text/css">\n\
 #player-api:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }\n\
 .ytp-probably-keyboard-focus :focus { background-color: rgba(120, 180, 255, 0.6); }\n\
-html:not(.no-focus-outline) #masthead-search-terms.masthead-search-terms-border:focus-within { border: 1px solid #4d90fe; box-shadow: inset 0px 0px 10px 2px #4d90fe; }\n\
+#masthead-search-terms.masthead-search-terms-border:focus-within { border: 1px solid #4d90fe; box-shadow: inset 0px 0px 8px 0px #4d90fe; }\n\
 html:not(.no-focus-outline) #watch-header:focus-within, \n\
 html:not(.no-focus-outline) #action-panel-details:focus-within, \n\
 html:not(.no-focus-outline) #watch-discussion:focus-within \n\
@@ -387,5 +387,4 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
     }
 
 })();
-
 
