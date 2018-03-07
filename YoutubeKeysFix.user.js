@@ -4,7 +4,7 @@
 // @homepageURL  https://github.com/Calciferz/YoutubeKeysFix
 // @supportURL   https://github.com/Calciferz/YoutubeKeysFix/issues
 // @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/master/YoutubeKeysFix.user.js
-// @version      1.1
+// @version      1.1.1
 // @description  Fix player controls Space, Left, Right, Up, Down to behave consistently after page load or clicking individual controls. Not focusing the mute button anymore.
 // @icon         http://youtube.com/yts/img/favicon_32-vflOogEID.png
 // @author       Calcifer
@@ -170,8 +170,8 @@
         // Redirect Space (32) to pause video, if not in a textbox
         var redirectSpace= 32 == event.which && !textbox;
         // Sliders' key handling behaviour is inconsistent with the default player behaviour. To disable them
-        // arrowkey events are redirected: Home/End/Left/Up/Right/Down (35-40) to video position/volume
-        var redirectArrows= 35 <= event.which && event.which <= 40 && event.target.getAttribute('role') == 'slider' && isSubelementOf(event.target, 'player');
+        // arrowkey events (33-40: PageUp/PageDown/End/Home/Left/Up/Right/Down) are redirected to page scroll/video position/volume
+        var redirectArrows= 33 <= event.which && event.which <= 40 && event.target.getAttribute('role') == 'slider' && isSubelementOf(event.target, 'player');
         if (redirectSpace || redirectArrows)  return redirectEvent(event);
     }
 
@@ -322,7 +322,7 @@ a.yt-simple-endpoint.ytd-compact-video-renderer { margin-top: 3px; }\n\
         if (document.getElementById('yt-masthead-container'))  $(document.head).append('<style name="yt-fix-classicUI" type="text/css">\n\
 #player-api:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }\n\
 .ytp-probably-keyboard-focus :focus { background-color: rgba(120, 180, 255, 0.6); }\n\
-html:not(.no-focus-outline) #masthead-search-terms.masthead-search-terms-border:focus-within { border: 1px solid #4d90fe; box-shadow: inset 0px 0px 10px 2px #4d90fe; }\n\
+#masthead-search-terms.masthead-search-terms-border:focus-within { border: 1px solid #4d90fe; box-shadow: inset 0px 0px 8px 0px #4d90fe; }\n\
 html:not(.no-focus-outline) #watch-header:focus-within, \n\
 html:not(.no-focus-outline) #action-panel-details:focus-within, \n\
 html:not(.no-focus-outline) #watch-discussion:focus-within \n\
@@ -387,5 +387,4 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
     }
 
 })();
-
 
