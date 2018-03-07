@@ -4,7 +4,7 @@
 // @homepageURL  https://github.com/Calciferz/YoutubeKeysFix
 // @supportURL   https://github.com/Calciferz/YoutubeKeysFix/issues
 // @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/master/YoutubeKeysFix.user.js
-// @version      1.1
+// @version      1.1.1
 // @description  Fix player controls Space, Left, Right, Up, Down to behave consistently after page load or clicking individual controls. Not focusing the mute button anymore.
 // @icon         http://youtube.com/yts/img/favicon_32-vflOogEID.png
 // @author       Calcifer

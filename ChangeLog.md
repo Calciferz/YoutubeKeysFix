@@ -1,3 +1,5 @@
+1.1.1:
+
 1.1:
 - tested with classicUI and materialUI on chromium: Opera, Vivaldi, Chrome, gecko: Firefox; Edge-Win10? won't test
   - in Firefox without the userscript: 'F' fails to go fullscreen if focus is outside player
