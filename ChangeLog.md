@@ -1,4 +1,6 @@
-1.1.1:
+1.1.2: 2024
+
+1.1.1: 2018
 - PageUp/Down redirected to page scroll
 
 1.1:
