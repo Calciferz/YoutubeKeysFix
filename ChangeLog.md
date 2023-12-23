@@ -1,3 +1,5 @@
+1.2.0:
+
 1.1.2: 2024
 - README.md: Change wording
 
