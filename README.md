@@ -40,8 +40,8 @@ When you have one of these addons installed you can install the userscript from 
 - after clicking settings button Space will toggle settings
 - after clicking fullscreen button Space will toggle fullscreen
 
-#### Sources of youtube shortcut behaviour:
-https://shortcutworld.com/Youtube-Player/win/Youtube-Player_Shortcuts
-https://www.hongkiat.com/blog/useful-youtube-keyboard-shortcuts-to-know/
-https://support.google.com/youtube/answer/7631406?hl=en
-2010: flash player?  https://www.makeuseof.com/tag/comprehensive-guide-youtube-player-keyboard-shortcuts/
+#### Sources for Youtube shortcut behaviour:
+- https://shortcutworld.com/Youtube-Player/win/Youtube-Player_Shortcuts
+- https://www.hongkiat.com/blog/useful-youtube-keyboard-shortcuts-to-know/
+- https://support.google.com/youtube/answer/7631406?hl=en
+- 2010: flash player? - https://www.makeuseof.com/tag/comprehensive-guide-youtube-player-keyboard-shortcuts/
