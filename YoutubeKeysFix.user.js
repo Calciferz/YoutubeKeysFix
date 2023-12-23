@@ -22,6 +22,9 @@
 ?disable_polymer=1
 */
 
+/* eslint-disable  no-multi-spaces */
+/* eslint-disable  no-multi-str */
+
 
 (function () {
     'use strict';
