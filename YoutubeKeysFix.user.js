@@ -275,12 +275,6 @@
     initStyle();
     initDom();
 
-    //document.addEventListener("DOMContentLoaded", function() {
-    $(document).ready(function () {
-        //console.log("YoutubeKeysFix: $(document).ready()");
-        //initDom();
-        initPlayer();
-    });
 
     function initEvents() {
         // Handlers are capture type to see all events before they are consumed
