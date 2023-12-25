@@ -60,7 +60,7 @@
         //var oldFocus= document.activeElement;
         newFocus.focus();
         var done= (newFocus[0] === document.activeElement);
-        if (! done)  console.log('YoutubeKeysFix: failed to focus newFocus=, activeElement=', newFocus[0], document.activeElement);
+        if (! done)  console.error('[YoutubeKeysFix]: tryFocus() failed to focus newFocus=', newFocus[0], ', activeElement=', document.activeElement);
         return done;
     }
 
@@ -113,7 +113,7 @@
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
-        //console.log('YoutubeKeysFix: dispatch cloneEvent=', cloneEvent);
+        console.log('[YoutubeKeysFix]: redirectEvent() cloneEvent=', cloneEvent);
         playerElem.dispatchEvent(cloneEvent);
     }
 
@@ -139,7 +139,7 @@
 
     function onKeydown(event) {
         // Debug log of key event
-        //if (event.key != 'Shift')  console.log("YoutubeKeysFix: " + event.type + " " + event.which + " ->", event.target, event);
+        //if (event.key != 'Shift')  console.log("[YoutubeKeysFix]: onKeydown() " + event.type + " " + event.which + " ->", event.target, event);
         if (event.which == 9) {
             // show focus outline when navigating focus
             $(document.documentElement).removeClass('no-focus-outline');
@@ -156,7 +156,7 @@
 
     function captureKeydown(event) {
         // Debug log of key event
-        //if (event.key != 'Shift')  console.log("YoutubeKeysFix: capture " + event.type + " " + event.which + " ->", event);  //, event);
+        //if (event.key != 'Shift')  console.log("[YoutubeKeysFix]: captureKeydown() " + event.type + " " + event.which + " ->", event);  //, event);
 
         // Esc switches focus between player(player-api/player-container(movie_player)) and webpage outside the player(masthead(buttons)/main(related/info/meta/comments))
         // event.target is focused (received the keypress)
@@ -184,7 +184,7 @@
     function captureMouse(event) {
         // Called when mouse button is pressed/released over an element.
         // Debug log of mouse button event
-        //console.log("YoutubeKeysFix: capture " + event.type + " ->", event.target);
+        //console.log("[YoutubeKeysFix]: captureMouse() " + event.type + " ->", event.target);
 
         // hide focus outline when clicking
         $(document.documentElement).addClass('no-focus-outline');
@@ -196,25 +196,25 @@
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
-        //console.log('YoutubeKeysFix: redirect focus=', newFocus);
+        //console.log('[YoutubeKeysFix]: redirectFocus() newFocus=', newFocus);
         newFocus.focus();
     }
 
     function onMouse(event) {
         // Called when mouse button is pressed over an element.
         // Debug log of mouse button event
-        //console.log("YoutubeKeysFix: " + event.type + " ->", event.target);
+        //console.log("[YoutubeKeysFix]: onMouse() " + event.type + " ->", event.target);
 
         // click outside of areas focuses player
         if (0 === getAreaOf(event.target))  return redirectFocus(event, playerElem);
     }
 
     function onWheel(event) {
-        //console.log("YoutubeKeysFix: " + event.type + " " + event.deltaY + " phase " + event.eventPhase + " ->", event.currentTarget, event);
+        //console.log("[YoutubeKeysFix]: onWheel() " + event.type + " " + event.deltaY + " phase " + event.eventPhase + " ->", event.currentTarget, event);
         if (! playerElem || ! playerElem.contains(event.target))  return;
 
         var deltaY= null !== event.deltaY ? event.deltaY : event.wheelDeltaY;
-        var up= deltaY <= 0;		// null == 0 -> up
+        var up= deltaY <= 0;    // null == 0 -> up
         var cloneEvent= new Event('keydown');
         cloneEvent.which= cloneEvent.keyCode= up ? 38 : 40;
         cloneEvent.key= up ? 'ArrowUp': 'ArrowDown';
@@ -241,7 +241,7 @@
     function captureFocus(event) {
         // Called when an element gets focus (by clicking or TAB)
         // Debug log of focused element
-        //console.log("YoutubeKeysFix: capture " + event.type + " ->", event.target);
+        //console.log("[YoutubeKeysFix]: captureFocus() " + event.type + " ->", event.target);
 
         // Window will focus the activeElement, do nothing at the moment
         if (event.target === window)  return;
@@ -271,7 +271,7 @@
     }
 
     // Run init on onYouTubePlayerReady ('#movie_player' created).
-    //console.log("YoutubeKeysFix: loading, onYouTubePlayerReady=", window.onYouTubePlayerReady);
+    console.log("[YoutubeKeysFix]: loading, onYouTubePlayerReady=", window.onYouTubePlayerReady);
     window.onYouTubePlayerReady= chainInitFunc(initPlayer, window.onYouTubePlayerReady);
     initEvents();
     initStyle();
@@ -279,7 +279,7 @@
 
     //document.addEventListener("DOMContentLoaded", function() {
     $(document).ready(function () {
-        //console.log("YoutubeKeysFix: $(document).ready()");
+        //console.log("[YoutubeKeysFix]: $(document).ready()");
         //initDom();
         initPlayer();
     });
@@ -379,11 +379,11 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
         // The movie player frame '#movie_player', might not be generated yet.
         playerElem= document.getElementById('movie_player') || $('#player .html5-video-player')[0];
         if (! playerElem) {
-            console.log("YoutubeKeysFix failed to find '#movie_player' element: not created yet");
+            console.error("[YoutubeKeysFix]: initPlayer() failed to find '#movie_player' element: not created yet");
             return false;
         }
 
-        //console.log("YoutubeKeysFix: initPlayer()");
+        console.log("[YoutubeKeysFix]: initPlayer()");
         // Movie player frame (element) is focused when loading the page to get movie player keyboard controls.
         if (window.location.pathname === "/watch")  playerElem.focus();
 
