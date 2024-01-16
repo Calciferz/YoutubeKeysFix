@@ -20,9 +20,6 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-s
 - Click outside player frame to scroll page.
 - Can't be focused: volume slider, progress bar, fine seeking bar, subtitle.
 
-#### Global keyboard shortcuts, changed:
-- Esc -> focus player when not in fullscreen
-
 #### Global keyboard shortcuts, unaffected:
 - Space -> play/pause on the whole page, not only when player is focused
 - K -> play/pause

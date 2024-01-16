@@ -93,26 +93,6 @@
         return done;
     }
 
-    function focusPlayer() {
-        var player= $(areaFocusDefault[1]);
-        if (! player[0])  return false;
-        // If focus was outside player
-        var focusSubelement= ! player[0].contains(document.activeElement) && areaFocusedSubelement[1];
-        // And focusSubelement is inside player then focus that finally
-        if (focusSubelement === player[0] || focusSubelement && ! player[0].contains(focusSubelement))  focusSubelement= null;
-
-        // Focus player first to scroll into view, then the subelement
-        var done= tryFocus(player);
-        if (! done)  return false;
-
-        // Focus player's areaFocusedSubelement if focus was outside player area
-        done= focusSubelement && tryFocus(focusSubelement);
-        // Show that focus indicator blue frame and background if subelement got focus
-        if (done)  player.addClass('ytp-probably-keyboard-focus');
-
-        return true;
-    }
-
 
     function redirectEvent(event, cloneEvent) {
         if (! playerElem)  initPlayer();
@@ -140,8 +120,7 @@
             // Bring focus to next area
             focusNextArea();
         } else {
-            var handled= focusPlayer();
-            if (! handled)  return;
+            return;
         }
 
         event.preventDefault();
