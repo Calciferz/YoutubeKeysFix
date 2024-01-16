@@ -241,18 +241,24 @@
         else if (document.MSFullscreenChange !== undefined)  document.addEventListener('MSFullscreenChange', onFullscreen);
     }
 
+
     function initStyle() {
-        $(document.head).append('\n\
-<style name="yt-fix-materialUI" type="text/css">\n\
-#player-container:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }\n\
-.ytp-probably-keyboard-focus :focus { background-color: rgba(120, 180, 255, 0.6); }\n\
-//html:not(.no-focus-outline) ytd-video-primary-info-renderer > #container > #info:focus-within, \n\
-//html:not(.no-focus-outline) ytd-video-secondary-info-renderer > #container > #top-row:focus-within, \n\
-//html:not(.no-focus-outline) ytd-video-secondary-info-renderer > #container > .description:focus-within \n\
-//{ box-shadow: 0 0 10px 0px rgba(0,0,0,0.4); }\n\
-html:not(.no-focus-outline) ytd-compact-video-renderer #dismissable:focus-within { box-shadow: 0 0 15px 1px rgba(0,0,100,0.4); }\n\
-a.yt-simple-endpoint.ytd-compact-video-renderer { margin-top: 3px; }\n\
-</style>');
+        $(document.head).append(`
+<style name="yt-fix-materialUI" type="text/css">
+
+#player-container:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }
+.ytp-probably-keyboard-focus :focus { background-color: rgba(120, 180, 255, 0.6); }
+
+//html:not(.no-focus-outline) ytd-video-primary-info-renderer > #container > #info:focus-within,
+//html:not(.no-focus-outline) ytd-video-secondary-info-renderer > #container > #top-row:focus-within,
+//html:not(.no-focus-outline) ytd-video-secondary-info-renderer > #container > .description:focus-within
+//{ box-shadow: 0 0 10px 0px rgba(0,0,0,0.4); }
+
+html:not(.no-focus-outline) ytd-compact-video-renderer #dismissable:focus-within { box-shadow: 0 0 15px 1px rgba(0,0,100,0.4); }
+a.yt-simple-endpoint.ytd-compact-video-renderer { margin-top: 3px; }
+
+</style>
+        `);
     }
 
 
