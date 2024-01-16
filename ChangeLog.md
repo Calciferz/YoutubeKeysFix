@@ -1,3 +1,5 @@
+2.0.0:
+
 1.3.1:
 - Remove jquery, load faster.
 
