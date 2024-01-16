@@ -279,7 +279,7 @@
         // Area names
         areaOrder= [
             null,
-            'player',
+            //'player',
             'header',
             'comments',
             'videos',
@@ -288,7 +288,7 @@
         // Areas' root elements
         areaContainers= [
             null,
-            document.getElementById('player-container'),    // player
+            //document.getElementById('player-container'),  // player
             document.getElementById('masthead-container'),  // header
             document.getElementById('sections'),  // comments
             document.getElementById('related'),   // videos
@@ -297,7 +297,7 @@
         // Areas' default element to focus
         areaFocusDefault= [
             null,
-            '#movie_player',           // player
+            //'#movie_player',         // player
             '#masthead input#search',  // header
             '#info #menu #top-level-buttons button:last()',  // comments
             '#items a.ytd-compact-video-renderer:first()',   // videos
@@ -331,9 +331,6 @@
 
         console.log("[YoutubeKeysFix]  initPlayer():  player=", [playerElem]);
 
-        // Movie player frame (element) is focused when loading the page to get movie player keyboard controls.
-        if (window.location.pathname === "/watch")  playerElem.focus();
-
         removeTabStops();
     }
 
@@ -351,6 +348,15 @@
                 elem.removeAttribute('tabindex');
             }
         }
+
+        // Remove tab stops from video player
+        //playerElem.removeAttribute('tabindex');
+        //removeTabIndexWithSelector(document, '#' + playerElem.id + '[tabindex]');
+        //removeTabIndexWithSelector(document, '#' + playerElem.id);
+        removeTabIndexWithSelector(document, '.html5-video-player');
+        //removeTabIndexWithSelector(playerElem, '.html5-video-container [tabindex]');
+        //removeTabIndexWithSelector(playerElem, '.html5-main-video[tabindex]');
+        removeTabIndexWithSelector(playerElem, '.html5-main-video');
 
         // Remove tab stops from progress bar
         //removeTabIndexWithSelector(playerElem, '.ytp-progress-bar[tabindex]');
