@@ -118,23 +118,19 @@
     }
 
 
-    function handleEsc(event) {
-        if (event.shiftKey) {
-            // Shift-Esc only implemented for watch page
-            if (window.location.pathname !== "/watch")  return;
-            // Not in fullscreen
-            if (getFullscreen())  return;
-            // show focus outline when navigating focus
-            document.documentElement.classList.remove('no-focus-outline');
-            // Bring focus to next area
-            focusNextArea();
-        } else {
-            return;
-        }
-
+    function handleShiftEsc(event) {
+        // Shift-Esc only implemented for watch page
+        if (window.location.pathname !== "/watch")  return;
+        // Not in fullscreen
+        if (getFullscreen())  return;
+        // show focus outline when navigating focus
+        document.documentElement.classList.remove('no-focus-outline');
+        // Bring focus to next area
+        focusNextArea();
         event.preventDefault();
         event.stopPropagation();
     }
+
 
     function onKeydown(event) {
         // Debug log of key event
@@ -146,7 +142,7 @@
 
         // event.target is the focused element (that received the keypress)
         // event not received when fullscreen in Opera (already handled by browser)
-        if (event.which == 27)  return handleEsc(event);
+        if (event.shiftKey && event.which == 27)  return handleShiftEsc(event);
  
         // Redirect Space (32) to pause video
         var redirectSpace= 32 == event.which;
