@@ -1,4 +1,5 @@
 2.0.0:
+- Disable focusing video player.
 
 1.3.1:
 - Remove jquery, load faster.

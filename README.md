@@ -17,9 +17,7 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-arrow
 - Left,Right -> jump 5sec backwards / forwards
 - Home,End -> jump to video start / end
 - Up,Down -> volume up / down
-- Player is focused right after pageload, no need to click in player frame.
-- Click outside player frame to scroll page.
-- Can't be focused: volume slider, progress bar, fine seeking bar, subtitle.
+- Can't be focused: video player, volume slider, progress bar, fine seeking bar, subtitle
 
 #### Global keyboard shortcuts, unaffected:
 - Space -> play/pause on the whole page, not only when player is focused
