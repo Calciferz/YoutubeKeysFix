@@ -294,8 +294,8 @@
             null,
             'player',
             'header',
-            'videos',
             'comments',
+            'videos',
         ];
 
         // Areas' root elements
@@ -303,8 +303,8 @@
             null,
             document.getElementById('player-container'),    // player
             document.getElementById('masthead-container'),  // header
-            document.getElementById('related'),   // videos
             document.getElementById('sections'),  // comments
+            document.getElementById('related'),   // videos
         ];
 
         // Areas' default element to focus
@@ -312,8 +312,8 @@
             null,
             '#movie_player',           // player
             '#masthead input#search',  // header
-            '#items a.ytd-compact-video-renderer:first()',   // videos
             '#info #menu #top-level-buttons button:last()',  // comments
+            '#items a.ytd-compact-video-renderer:first()',   // videos
         ];
     }
 
