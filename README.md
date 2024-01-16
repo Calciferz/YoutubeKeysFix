@@ -3,7 +3,6 @@
 This is a userscript for web browsers to:
 - make YouTube keyboard controls (arrow keys) more intuitive,
 - fix annoyances like focusing volume slider and progressbar,
-- enable volume control by mousewheel scrolling over the player,
 - make Tab-navigation more user-friendly by visualizing focus on player, video list items, comments with frame shadow.
 
 Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-shortcuts-fix  
