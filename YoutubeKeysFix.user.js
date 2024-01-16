@@ -293,7 +293,7 @@
         document.addEventListener('mousedown', onMouse);
         // mousewheel over player area adjusts volume
         // Passive event handler can call preventDefault() on wheel events to prevent scrolling the page
-        document.addEventListener('wheel', onWheel, { passive: false, capture: true });
+        //document.addEventListener('wheel', onWheel, { passive: false, capture: true });
 
         // captureKeydown is run before original handlers to have a chance to modify the events
         document.addEventListener('keydown', captureKeydown, true);
