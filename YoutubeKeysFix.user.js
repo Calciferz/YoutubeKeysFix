@@ -145,16 +145,6 @@
         // Debug log of key event
         //if (event.key != 'Shift')  console.log("[YoutubeKeysFix]  captureKeydown():  type=" + event.type, "key='" + event.key + "' target=", [event.target, event]);
 
-        // Esc switches focus between player(player-api/player-container(movie_player)) and webpage outside the player(masthead(buttons)/main(related/info/meta/comments))
-        // event.target is focused (received the keypress)
-        // captureKeydown not executed when fullscreen, and this should not handle Esc
-        var textbox= keyHandlingElements[event.target.tagName]  ||  event.target.isContentEditable;//  ||  event.target.getAttribute('role') == 'textbox';
-        // capture only in textboxes to override their behaviour, general handling in onKeydown()
-        if (event.which == 27 && textbox)  return handleEsc(event);
-
-        // Tab: do the default
-        //if (event.which == 9)  return;
-
         // Ignore events for the playerElem to avoid recursion
         //if (playerElem == document.activeElement)  return;
         if (playerElem === event.target)  return;
