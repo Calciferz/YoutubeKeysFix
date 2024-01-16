@@ -111,18 +111,13 @@
     }
 
 
-    function handleEsc(event) {
-        if (event.shiftKey) {
-            // Shift-Esc only implemented for watch page
-            if (window.location.pathname !== "/watch")  return;
-            // Not in fullscreen
-            if (getFullscreen())  return;
-            // Bring focus to next area
-            focusNextArea();
-        } else {
-            return;
-        }
-
+    function handleShiftEsc(event) {
+        // Shift-Esc only implemented for watch page
+        if (window.location.pathname !== "/watch")  return;
+        // Not in fullscreen
+        if (getFullscreen())  return;
+        // Bring focus to next area
+        focusNextArea();
         event.preventDefault();
         event.stopPropagation();
     }
@@ -146,7 +141,7 @@
         // Shift-Esc -> cycle through search box, videos, comments
         // Event is not received when fullscreen in Opera (already handled by browser)
         if (keyCode == 27 && event.shiftKey)
-          return handleEsc(event);
+          return handleShiftEsc(event);
 
         // Ignore events for the playerElem to avoid recursion
         //if (playerElem == document.activeElement)  return;
