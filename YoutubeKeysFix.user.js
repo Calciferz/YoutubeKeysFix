@@ -361,8 +361,8 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
 
         // Areas' root elements
         areaOrder= [ null, 'player', 'masthead', 'videos', 'content' ];
-        areaContainers= isMaterialUI ? [ null, 'player-container', 'masthead-container', 'related', 'main' ]
-        : [ null, 'player-api', 'yt-masthead-container', 'watch7-sidebar', 'watch7-content' ];
+        areaContainers= isMaterialUI ? [ null, 'player-container', 'masthead-container' /* header */, 'related', 'sections' /* comments */ ]
+        : [ null, 'player-api', 'yt-masthead-container' /* header */, 'watch7-sidebar' /* related videos */, 'watch7-content' /* comments */ ];
 
         // Areas' default element to focus
         areaFocusDefault[0]= null;
