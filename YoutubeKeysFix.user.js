@@ -204,9 +204,6 @@
         // Called when mouse button is pressed over an element.
         // Debug log of mouse button event
         //console.log("[YoutubeKeysFix]: onMouse() " + event.type + " ->", event.target);
-
-        // click outside of areas focuses player
-        if (0 === getAreaOf(event.target))  return redirectFocus(event, playerElem);
     }
 
     function onWheel(event) {
