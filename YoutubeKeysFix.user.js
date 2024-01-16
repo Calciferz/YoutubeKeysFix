@@ -385,8 +385,32 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
         // Movie player frame (element) is focused when loading the page to get movie player keyboard controls.
         if (window.location.pathname === "/watch")  playerElem.focus();
 
-        $('#player .caption-window').attr('tabindex', '-1');
-        //var caption= playerElem.querySelector && playerElem.querySelector('.caption-window');  if (caption)  caption.setAttribute('tabindex', -1);
+        removeTabStops();
+    }
+
+    function removeTabStops() {
+        //let $$= document.querySelectorAll;
+        //console.log("[YoutubeKeysFix]: removeTabStops()");
+
+        function removeTabIndex(i, e) {
+            e.removeAttribute('tabindex');
+            console.log("[YoutubeKeysFix] removeTabIndex:", e);
+        }
+
+        // progress bar
+        $('.ytp-progress-bar[tabindex]').each( removeTabIndex );
+        // fine seeking bar
+        $('.ytp-fine-scrubbing-container [tabindex]').each( removeTabIndex );
+        // volume slider
+        $('.ytp-volume-panel[tabindex]').each( removeTabIndex );
+        // subtitle
+        $('.caption-window').each( removeTabIndex );
+        /*
+        $$('#movie_player [tabindex]').forEach( removeTabIndex );
+        $$('.ytp-chrome-bottom [tabindex]').forEach( removeTabIndex );
+        /**/
+
+        //console.log("[YoutubeKeysFix]: removeTabStops() DONE");
     }
 
 })();
