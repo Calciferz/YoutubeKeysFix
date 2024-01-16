@@ -279,7 +279,7 @@
 
         document.addEventListener('mousedown', onMouse);
         // mousewheel over player area adjusts volume
-        document.addEventListener('wheel', onWheel, true);
+        //document.addEventListener('wheel', onWheel, true);
         // captureKeydown is run before original handlers to have a chance to modify the events
         document.addEventListener('keydown', captureKeydown, true);
         // onKeydown handles keypress in the bubbling phase to handle Esc if not handled by the focused element
