@@ -19,6 +19,7 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-s
 - Up,Down -> volume up / down
 - Player is focused right after pageload, no need to click in player frame.
 - Click outside player frame to scroll page.
+- Can't be focused: volume slider, progress bar, fine seeking bar, subtitle.
 
 #### Global keyboard shortcuts, changed:
 - Esc -> focus player when not in fullscreen
