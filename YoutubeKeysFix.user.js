@@ -129,8 +129,7 @@
             // Bring focus to next area
             focusNextArea();
         } else {
-            var handled= focusPlayer();
-            if (! handled)  return;
+            return;
         }
 
         event.preventDefault();
