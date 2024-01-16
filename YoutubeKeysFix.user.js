@@ -374,8 +374,6 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
     }
 
     function initPlayer() {
-        if (playerElem)  return;
-
         // The movie player frame '#movie_player', might not be generated yet.
         playerElem= document.getElementById('movie_player') || $('#player .html5-video-player')[0];
         if (! playerElem) {
