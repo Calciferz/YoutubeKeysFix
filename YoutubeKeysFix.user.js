@@ -196,15 +196,6 @@
     }
 
 
-    function redirectFocus(event, newFocus) {
-        if (! newFocus)  return;
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-        //console.log("[YoutubeKeysFix]  redirectFocus():  to=", newFocus);
-        newFocus.focus();
-    }
-
     function onMouse(event) {
         // Called when mouse button is pressed over an element.
         // Debug log of mouse button event
@@ -248,14 +239,8 @@
         // Window will focus the activeElement, do nothing at the moment
         if (event.target === window)  return;
 
-        // Focus player if focusing body (default focus, eg. pressing Esc)
-        if (event.target === document.body) {
-            return redirectFocus(event, areaFocusedSubelement[1] || playerElem);
-        }
-
         // Save focused element inside player or on page
         var area= getAreaOf(event.target);
-        //if (0 === area)  return redirectFocus(event, playerElem);
         if (0 !== area) {
             areaFocusedSubelement[area]= event.target;
             //if (areaContainers[area])  document.getElementById(areaContainers[area]).activeElement= event.target;
