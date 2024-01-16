@@ -100,6 +100,24 @@
         return true;
     }
 
+
+    function redirectEvent(event, cloneEvent) {
+        if (! playerElem)  initPlayer();
+        if (! playerElem || ! $(playerElem).is(':visible()'))  return;
+        cloneEvent= cloneEvent || new Event(event.type);
+        //var cloneEvent= $.extend(cloneEvent, event);
+        cloneEvent.redirectedEvent= event;
+        // shallow copy every property
+        for (var k in event)  if (! (k in cloneEvent))  cloneEvent[k]= event[k];
+
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        //console.log('YoutubeKeysFix: dispatch cloneEvent=', cloneEvent);
+        playerElem.dispatchEvent(cloneEvent);
+    }
+
+
     function handleEsc(event) {
         if (event.shiftKey) {
             // Shift-Esc only implemented for watch page
@@ -132,22 +150,6 @@
         if (event.which == 27)  return handleEsc(event);
     }
 
-
-    function redirectEvent(event, cloneEvent) {
-        if (! playerElem)  initPlayer();
-        if (! playerElem || ! $(playerElem).is(':visible()'))  return;
-        cloneEvent= cloneEvent || new Event(event.type);
-        //var cloneEvent= $.extend(cloneEvent, event);
-        cloneEvent.redirectedEvent= event;
-        // shallow copy every property
-        for (var k in event)  if (! (k in cloneEvent))  cloneEvent[k]= event[k];
-
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-        //console.log('YoutubeKeysFix: dispatch cloneEvent=', cloneEvent);
-        playerElem.dispatchEvent(cloneEvent);
-    }
 
     // Tag list from Youtube Plus: https://github.com/ParticleCore/Particle/blob/master/src/Userscript/YouTubePlus.user.js#L885
     var keyHandlingElements= { INPUT:1, TEXTAREA:1, IFRAME:1, OBJECT:1, EMBED:1 };
