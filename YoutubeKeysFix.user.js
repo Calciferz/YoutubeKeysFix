@@ -264,7 +264,6 @@
 
     function chainInitFunc(f1, f2) {
         return (function() {
-            //$(document).ready(f1);
             if (f1)  f1.apply(this, arguments);
             if (f2)  f2.apply(this, arguments);
         });
@@ -276,13 +275,6 @@
     initEvents();
     initStyle();
     initDom();
-
-    //document.addEventListener("DOMContentLoaded", function() {
-    $(document).ready(function () {
-        //console.log("[YoutubeKeysFix]: $(document).ready()");
-        //initDom();
-        initPlayer();
-    });
 
     function initEvents() {
         // Handlers are capture type to see all events before they are consumed
