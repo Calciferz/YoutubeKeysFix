@@ -303,7 +303,9 @@
     function initStyle() {
         // Style for materialUI player, video list item, comment highlight:
         // #masthead-container is present on all materialUI pages: index, watch, etc.
-        if (document.getElementById('masthead'))  $(document.head).append('<style name="yt-fix-materialUI type="text/css">\n\
+        if (document.getElementById('masthead')) {
+            $(document.head).append('\n\
+<style name="yt-fix-materialUI type="text/css">\n\
 #player-container:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }\n\
 .ytp-probably-keyboard-focus :focus { background-color: rgba(120, 180, 255, 0.6); }\n\
 //html:not(.no-focus-outline) ytd-video-primary-info-renderer > #container > #info:focus-within, \n\
@@ -312,11 +314,15 @@
 //{ box-shadow: 0 0 10px 0px rgba(0,0,0,0.4); }\n\
 html:not(.no-focus-outline) ytd-compact-video-renderer #dismissable:focus-within { box-shadow: 0 0 15px 1px rgba(0,0,100,0.4); }\n\
 a.yt-simple-endpoint.ytd-compact-video-renderer { margin-top: 3px; }\n\
-</style>');
+</style>\n\
+            ');
+        }
 
         // Style for classicUI player, video list item, comment-simplebox highlight and layout rearranging for the highlight:
         // #yt-masthead-container is present on all classicUI pages: index, watch, etc.
-        if (document.getElementById('yt-masthead-container'))  $(document.head).append('<style name="yt-fix-classicUI" type="text/css">\n\
+        if (document.getElementById('yt-masthead-container')) {
+            $(document.head).append('\n\
+<style name="yt-fix-classicUI" type="text/css">\n\
 #player-api:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }\n\
 .ytp-probably-keyboard-focus :focus { background-color: rgba(120, 180, 255, 0.6); }\n\
 #masthead-search-terms.masthead-search-terms-border:focus-within { border: 1px solid #4d90fe; box-shadow: inset 0px 0px 8px 0px #4d90fe; }\n\
@@ -340,7 +346,9 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
 .related-list-item .content-wrapper { margin-left: 176px; margin-right: 5px; }\n\
 .related-list-item .related-item-action-menu { top: 3px; right: 0; }\n\
 .related-item-dismissable .related-item-action-menu .yt-uix-button { margin: 0; height: 20px; width: 20px; }\n\
-</style>');
+</style>\n\
+            ');
+        }
     }
 
     function initDom() {
