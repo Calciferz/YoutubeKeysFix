@@ -29,11 +29,12 @@
 (function () {
     'use strict';
 
-
     var playerContainer;  // = document.getElementById('player-container') || document.getElementById('player') in embeds
-    var playerElem;  // = document.getElementById('movie_player') || playerContainer.querySelector('.html5-video-player') in embeds
-    //var playerFocused;
+    var playerElem;  // = document.getElementById('movie_player')
     var isMaterialUI, isClassicUI;
+    var subtitleObserver;
+    var subtitleContainer;
+
     var lastFocusedPageArea;
     var areaOrder= [ null ], areaContainers= [ null ], areaFocusDefault= [ null ], areaFocusedSubelement= [ null ];
     //var areaContainers= {}, areaFocusedSubelement= {};
@@ -389,8 +390,74 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
         // Movie player frame (element) is focused when loading the page to get movie player keyboard controls.
         if (window.location.pathname === "/watch")  playerElem.focus();
 
-        $('#player .caption-window').attr('tabindex', '-1');
-        //var caption= playerElem.querySelector && playerElem.querySelector('.caption-window');  if (caption)  caption.setAttribute('tabindex', -1);
+        removeTabStops();
+    }
+
+    // Disable focusing certain player controls: volume slider, progress bar, fine seeking bar, subtitle.
+    // It was possible to focus these using TAB, but the controls (space, arrow keys)
+    // change in a confusing manner, creating a miserable UX.
+    // Maybe this is done for accessibility reasons? The irony...
+    // Youtube should have rethought this design for a decade now.
+    function removeTabStops() {
+        //console.log("[YoutubeKeysFix]  removeTabStops()");
+
+        function removeTabIndexWithSelector(rootElement, selector) {
+            for (let elem of rootElement.querySelectorAll(selector)) {
+                console.log("[YoutubeKeysFix]  removeTabIndexWithSelector():", "tabindex=", elem.getAttribute('tabindex'), [elem]);
+                elem.removeAttribute('tabindex');
+            }
+        }
+
+        // Remove tab stops from progress bar
+        //removeTabIndexWithSelector(playerElem, '.ytp-progress-bar[tabindex]');
+        removeTabIndexWithSelector(playerElem, '.ytp-progress-bar');
+
+        // Remove tab stops from fine seeking bar
+        //removeTabIndexWithSelector(playerElem, '.ytp-fine-scrubbing-container [tabindex]');
+        //removeTabIndexWithSelector(playerElem, '.ytp-fine-scrubbing-thumbnails[tabindex]');
+        removeTabIndexWithSelector(playerElem, '.ytp-fine-scrubbing-thumbnails');
+
+        // Remove tab stops from volume slider
+        //removeTabIndexWithSelector(playerElem, '.ytp-volume-panel[tabindex]');
+        removeTabIndexWithSelector(playerElem, '.ytp-volume-panel');
+
+        // Remove tab stops of non-buttons and links (inclusive selector)
+        //removeTabIndexWithSelector(playerElem, '[tabindex]:not(button):not(a):not(div.ytp-ce-element)');
+
+        // Make unfocusable all buttons in the player
+        //removeTabIndexWithSelector(playerElem, '[tabindex]');
+
+        // Make unfocusable all buttons in the player controls (bottom bar)
+        //removeTabIndexWithSelector(playerElem, '.ytp-chrome-bottom [tabindex]');
+        //removeTabIndexWithSelector(playerElem.querySelector('.ytp-chrome-bottom'), '[tabindex]');
+
+        // Remove tab stops from subtitle element when created
+        function mutationHandler(mutations, observer) {
+            for (let mut of mutations) {
+                //console.log("[YoutubeKeysFix]  mutationHandler():\n", mut);  // spammy
+                //removeTabIndexWithSelector(mut.target, '.caption-window[tabindex]');
+                removeTabIndexWithSelector(mut.target, '.caption-window');
+
+                if (subtitleContainer)  continue;
+                subtitleContainer = playerElem.querySelector('#ytp-caption-window-container');
+                // If subtitle container is created
+                if (subtitleContainer) {
+                    console.log("[YoutubeKeysFix]  mutationHandler():  Subtitle container created, stopped observing #movie_player", [subtitleContainer]);
+                    // Observe subtitle container instead of movie_player
+                    observer.disconnect();
+                    observer.observe(subtitleContainer, { childList: true });
+                }
+            }
+        }
+
+        // Subtitle container observer setup
+        // #movie_player > #ytp-caption-window-container > .caption-window
+        subtitleContainer = playerElem.querySelector('#ytp-caption-window-container');
+        if (!subtitleObserver && window.MutationObserver) {
+            subtitleObserver = new window.MutationObserver( mutationHandler );
+            // Observe movie_player because subtitle container is not created yet
+            subtitleObserver.observe(subtitleContainer || playerElem, { childList: true, subtree: !subtitleContainer });
+        }
     }
 
 

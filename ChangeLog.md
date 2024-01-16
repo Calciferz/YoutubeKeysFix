@@ -1,4 +1,5 @@
 1.2.0:
+- Disable focusing certain player controls: volume slider, progress bar, fine seeking bar, subtitle (removeTabStops). It was possible to focus the sliders using TAB, which resulted in the arrow keys for volume and seeking to mix in a confusing manner, creating a miserable UX.
 - Minor fixes due to youtube's changing element IDs.
 
 1.1.2: 2024
