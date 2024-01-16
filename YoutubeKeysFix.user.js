@@ -147,7 +147,13 @@
         // event.target is the focused element (that received the keypress)
         // event not received when fullscreen in Opera (already handled by browser)
         if (event.which == 27)  return handleEsc(event);
-    }
+ 
+        // Redirect Space (32) to pause video
+        var redirectSpace= 32 == event.which;
+        // Redirect arrow keys (37-40: Left,Up,Right,Down) to video player (position/volume)
+        var redirectArrows= 37 <= event.which && event.which <= 40;
+        if (redirectSpace || redirectArrows)  return redirectEvent(event);
+   }
 
 
     // Tag list from Youtube Plus: https://github.com/ParticleCore/Particle/blob/master/src/Userscript/YouTubePlus.user.js#L885
@@ -172,11 +178,13 @@
         if (playerElem === event.target)  return;
 
         // Redirect Space (32) to pause video, if not in a textbox
-        var redirectSpace= 32 == event.which && !textbox;
+        //var textbox= keyHandlingElements[event.target.tagName]  ||  event.target.isContentEditable;//  ||  event.target.getAttribute('role') == 'textbox';
+        //var redirectSpace= 32 == event.which && !textbox;
+
         // Sliders' key handling behaviour is inconsistent with the default player behaviour. To disable them
-        // arrowkey events (33-40: PageUp/PageDown/End/Home/Left/Up/Right/Down) are redirected to page scroll/video position/volume
+        // redirect arrow keys (33-40: PageUp,PageDown,End,Home,Left,Up,Right,Down) to page scroll/video player (position/volume)
         var redirectArrows= 33 <= event.which && event.which <= 40 && event.target.getAttribute('role') == 'slider' && isSubelementOf(event.target, 'player');
-        if (redirectSpace || redirectArrows)  return redirectEvent(event);
+        if (redirectArrows)  return redirectEvent(event);
     }
 
 
