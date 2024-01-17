@@ -1,5 +1,6 @@
 2.0.0:
 - Disable focusing video player.
+- Add permanent box-shadow under player, not only when focused.
 
 1.3.1:
 - Remove jquery, load faster.
