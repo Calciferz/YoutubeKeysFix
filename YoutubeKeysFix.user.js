@@ -83,9 +83,13 @@
         // To enter player after last area: nextArea= 1;  To skip player: nextArea= 2;
         if (nextArea >= areaContainers.length)  nextArea= 2;
 
-        var done= tryFocus( areaFocusedSubelement[nextArea] );
-        if (! done)  done= tryFocus( $(areaFocusDefault[nextArea]) );
-        //if (! done)  done= tryFocus( areaContainers[nextArea] );
+        let done = false;
+        do {
+          done= tryFocus( areaFocusedSubelement[nextArea] );
+          if (! done)  done= tryFocus( $(areaFocusDefault[nextArea]) );
+          //if (! done)  done= tryFocus( areaContainers[nextArea] );
+          if (! done)  nextArea++;
+        } while (!done && nextArea < areaContainers.length);
         return done;
     }
 
