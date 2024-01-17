@@ -47,17 +47,17 @@
       : elem.tagName;
     }
 
-    function isSubelementOf(elementWithin, ancestor) {
+    function isElementWithin(elementWithin, ancestor) {
         if (! ancestor)  return null;
         for (; elementWithin; elementWithin= elementWithin.parentElement) {
-            if (elementWithin.id == ancestor)  return true;
+            if (elementWithin === ancestor)  return true;
         }
         return false;
     }
 
     function getAreaOf(elementWithin) {
         for (var i= 1; i<areaContainers.length; i++) {
-          if (isSubelementOf(elementWithin, areaContainers[i].id))  return i;
+          if (isElementWithin(elementWithin, areaContainers[i]))  return i;
         }
         return 0;
     }
@@ -149,14 +149,14 @@
           return handleShiftEsc(event);
         }
 
-        // Ignore events for the playerElem to avoid recursion
-        //if (playerElem == document.activeElement)  return;
-        if (playerElem === event.target)  return;
+        // Only capture events within player
+        if (!isElementWithin(event.target, playerElem))  return;
 
         // Sliders' key handling behaviour is inconsistent with the default player behaviour
         // Redirect arrow keys (33-40: PageUp,PageDown,End,Home,Left,Up,Right,Down) to page scroll/video player (position/volume)
-        var redirectArrows= 33 <= event.which && event.which <= 40 && event.target.getAttribute('role') == 'slider' && isSubelementOf(event.target, playerElem.id);
-        if (redirectArrows)  return redirectEvent(event);
+        if (33 <= keyCode && keyCode <= 40 && event.target !== playerElem && event.target.getAttribute('role') == 'slider') {
+          return redirectEventTo(playerElem, event);
+        }
     }
 
 
