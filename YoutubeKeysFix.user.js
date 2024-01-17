@@ -250,6 +250,21 @@
 
 #player-container:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }
 
+/* Seekbar (when visible) gradient shadow is only as high as the seekbar instead of darkening the bottom 1/3 of the video */
+/* Copied values from class .ytp-chrome-bottom in www-player.css */
+.ytp-chrome-bottom {
+  padding-top: 10px;
+  left: 0 !important;
+  width: 100% !important;
+  background-image: linear-gradient(to top, rgb(0 0 0 / 70%), rgb(0 0 0 / 0%));
+}
+.ytp-chrome-bottom > * {
+  margin-inline: 12px;
+}
+.ytp-gradient-bottom {
+  display: none;
+}
+
 /* Highlight focused button in player */
 .ytp-probably-keyboard-focus :focus {
   background-color: rgba(120, 180, 255, 0.6);
