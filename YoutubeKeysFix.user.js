@@ -56,9 +56,10 @@
     }
 
     function getAreaOf(elementWithin) {
-        for (var i= 1; i<areaContainers.length; i++)  if (isSubelementOf(elementWithin, areaContainers[i]))  return i;
+        for (var i= 1; i<areaContainers.length; i++) {
+          if (isSubelementOf(elementWithin, areaContainers[i].id))  return i;
+        }
         return 0;
-        //for (var area in areaContainers)  if (isSubelementOf(document.activeElement, areaContainers[area]))  return area;
     }
     function getFocusedArea() { return getAreaOf(document.activeElement); }
 
@@ -211,7 +212,7 @@
         var area= getAreaOf(event.target);
         if (0 !== area) {
             areaFocusedSubelement[area]= event.target;
-            //if (areaContainers[area])  document.getElementById(areaContainers[area]).activeElement= event.target;
+            //if (areaContainers[area])  areaContainers[area].activeElement= event.target;
             // store if not focusing player area
             if (area !== 1)  lastFocusedPageArea= area;
         }
@@ -298,10 +299,10 @@
         // Areas' root elements
         areaContainers= [
             null,
-            'player-container',    // player
-            'masthead-container',  // header
-            'related',   // videos
-            'sections',  // comments
+            document.getElementById('player-container'),    // player
+            document.getElementById('masthead-container'),  // header
+            document.getElementById('related'),   // videos
+            document.getElementById('sections'),  // comments
         ];
 
         // Areas' default element to focus
