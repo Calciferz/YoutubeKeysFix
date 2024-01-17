@@ -309,7 +309,7 @@
     function initStyle() {
         // Style for materialUI player, video list item, comment highlight:
         // #masthead-container is present on all materialUI pages: index, watch, etc.
-        if (document.getElementById('masthead'))  $(document.head).append('<style name="yt-fix-materialUI type="text/css">\n\
+        if (document.getElementById('masthead'))  $(document.head).append('<style name="yt-fix-materialUI" type="text/css">\n\
 #player-container:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }\n\
 .ytp-probably-keyboard-focus :focus { background-color: rgba(120, 180, 255, 0.6); }\n\
 //html:not(.no-focus-outline) ytd-video-primary-info-renderer > #container > #info:focus-within, \n\
