@@ -95,20 +95,22 @@
     }
 
 
-    function redirectEvent(event, cloneEvent) {
-        if (! playerElem)  initPlayer();
-        if (! playerElem || ! $(playerElem).is(':visible()'))  return;
+    function redirectEventTo(target, event, cloneEvent) {
+        if (! target || ! $(target).is(':visible()'))  return;
         cloneEvent= cloneEvent || new Event(event.type);
         //var cloneEvent= $.extend(cloneEvent, event);
-        cloneEvent.redirectedEvent= event;
         // shallow copy every property
         for (var k in event)  if (! (k in cloneEvent))  cloneEvent[k]= event[k];
+        cloneEvent.originalEvent= event;
 
         event.preventDefault();
         event.stopPropagation();
         event.stopImmediatePropagation();
-        //console.log("[YoutubeKeysFix]  redirectEvent():  type=" + cloneEvent.type, "key='" + cloneEvent.key + "' from=", [event.target, event, cloneEvent]);
-        playerElem.dispatchEvent(cloneEvent);
+
+        try { console.log("[YoutubeKeysFix]  redirectEventTo():  type=" + cloneEvent.type, "key='" + cloneEvent.key + "' to=" + formatElemIdOrTag(target), "from=", [event.target, event, cloneEvent]); }
+        catch (err)  { console.error("[YoutubeKeysFix]  redirectEventTo():  Error while logging=", err); }
+
+        target.dispatchEvent(cloneEvent);
     }
 
 
@@ -180,7 +182,7 @@
         var cloneEvent= new Event('keydown');
         cloneEvent.which= cloneEvent.keyCode= up ? 38 : 40;
         cloneEvent.key= up ? 'ArrowUp': 'ArrowDown';
-        redirectEvent(event, cloneEvent);
+        redirectEventTo(playerElem, event, cloneEvent);
     }
 
     function getFullscreen() {
