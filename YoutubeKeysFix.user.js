@@ -256,8 +256,6 @@
 //html:not(.no-focus-outline) ytd-video-secondary-info-renderer > #container > .description:focus-within
 //{ box-shadow: 0 0 10px 0px rgba(0,0,0,0.4); }
 
-html:not(.no-focus-outline) ytd-compact-video-renderer #dismissable:focus-within { box-shadow: 0 0 15px 1px rgba(0,0,100,0.4); }
-
         `;
         document.head.appendChild(s);
     }
