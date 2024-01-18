@@ -135,7 +135,32 @@
         // Debug log of key event
         //if (event.key != 'Shift')  console.log("[YoutubeKeysFix]  onKeydown():  type=" + event.type, "key='" + event.key + "' target=", [event.target, event]);
 
+        let keyCode = event.which;
+
+        // Ignore redirected events to avoid recursion
+        if (event.originalEvent)  return;
+
+        let redirect = false;
+        let inTextbox= keyHandlingElements[event.target.tagName]  ||  event.target.isContentEditable;  //||  event.target.getAttribute('role') == 'textbox';
+        // event.target is the focused element that received the keypress
+
         // Space -> pause video except when writing a comment - Youtube takes care of this
+        //if (keyCode == 32)  redirect = !inTextbox;
+        //if (keyCode == 32)  return redirectEventTo(document.body, event);
+
+        // Left,Right -> jump 5sec - Youtube takes care of this
+        //if (keyCode == 37 || keyCode == 39)  redirect = !inTextbox;
+
+        // End,Home,Up,Down -> control the player if page is scrolled to the top, otherwise scroll the page
+        if (keyCode == 35 || keyCode == 36 || keyCode == 38 || keyCode == 40) {
+          redirect = !inTextbox && 0 == document.documentElement.scrollTop;
+        }
+
+        // Debug log of redirect
+        //if (redirect)  console.log("[YoutubeKeysFix]  onKeydown():  redirect, type=" + event.type, "key='" + event.key + "' target=", [event.target, event]);
+        if (redirect) {
+          return redirectEventTo(playerElem, event);
+        }
     }
 
 
@@ -241,7 +266,7 @@
 
         // captureKeydown is run before original handlers to capture key presses before the player does
         document.addEventListener('keydown', captureKeydown, true);
-        // onKeydown handles Tab in the bubbling phase after other elements (textbox, button, link) got a chance.
+        // onKeydown handles Tab,End,Home,Up,Down in the bubbling phase after other elements (textbox, button, link) got a chance.
         document.addEventListener('keydown', onKeydown);
 
         if (document.onfullscreenchange !== undefined)  document.addEventListener('fullscreenchange', onFullscreen);

@@ -1,4 +1,5 @@
 2.0.0:
+- Up,Down (volume up / down), Home,End (jump to video start / end) ONLY WHEN page is scrolled to top, otherwise scrolls page.
 - Disable focusing video player.
 - Remove box-shadow under player.
 
