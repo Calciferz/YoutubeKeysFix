@@ -148,8 +148,8 @@
         //if (playerElem == document.activeElement)  return;
         if (playerElem === event.target)  return;
 
-        // Sliders' key handling behaviour is inconsistent with the default player behaviour. To disable them
-        // arrowkey events (33-40: PageUp/PageDown/End/Home/Left/Up/Right/Down) are redirected to page scroll/video position/volume
+        // Sliders' key handling behaviour is inconsistent with the default player behaviour
+        // Redirect arrow keys (33-40: PageUp,PageDown,End,Home,Left,Up,Right,Down) to page scroll/video player (position/volume)
         var redirectArrows= 33 <= event.which && event.which <= 40 && event.target.getAttribute('role') == 'slider' && isSubelementOf(event.target, playerElem.id);
         if (redirectArrows)  return redirectEvent(event);
     }
