@@ -38,6 +38,18 @@
     var areaOrder= [ null ], areaContainers= [ null ], areaFocusDefault= [ null ], areaFocusedSubelement= [ null ];
     //var areaContainers= {}, areaFocusedSubelement= {};
 
+
+    function formatElemIdOrClass(elem) {
+      return   elem.id ?  '#' + elem.id
+      : elem.className ?  '.' + elem.className.replace(' ', '.')
+      : elem.tagName;
+    }
+
+    function formatElemIdOrTag(elem) {
+      return   elem.id ?  '#' + elem.id
+      : elem.tagName;
+    }
+
     function isSubelementOf(elementWithin, ancestor) {
         if (! ancestor)  return null;
         for (; elementWithin; elementWithin= elementWithin.parentElement) {
