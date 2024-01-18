@@ -1,0 +1,4 @@
+  /* Less space between header and video */
+  ytd-watch-flexy[default-layout]:not([no-top-margin]):not([reduced-top-margin]) #columns#columns > * {
+    padding-top: 0px;
+  }
