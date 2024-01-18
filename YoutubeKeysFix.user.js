@@ -29,7 +29,6 @@
 
     var playerContainer;  // = document.getElementById('player-container') || document.getElementById('player') in embeds
     var playerElem;  // = document.getElementById('movie_player')
-    var isMaterialUI, isClassicUI;
     var isEmbeddedUI;
     var subtitleObserver;
     var subtitleContainer;
@@ -288,23 +287,17 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
     }
 
     function initDom() {
-        isMaterialUI= (null !== document.getElementById('masthead'));
-        isClassicUI= (null !== document.getElementById('yt-masthead-container'));
-        // MaterialUI has an extra  #player.skeleton > #player-api element, remnant of the classicUI, different from the one expected here
-        // The one with the video:  ytd-watch > #top > #player > #player-container.ytd-watch (> #movie_player.html5-video-player)
 
         // Areas' root elements
         areaOrder= [ null, 'player', 'masthead', 'videos', 'content' ];
-        areaContainers= isMaterialUI ? [ null, 'player-container', 'masthead-container', 'related', 'sections' ]
-        : [ null, 'player-api', 'yt-masthead-container', 'watch7-sidebar', 'watch7-content' ];
+        areaContainers= [ null, 'player-container', 'masthead-container', 'related', 'sections' ];
 
         // Areas' default element to focus
         areaFocusDefault[0]= null;
-        areaFocusDefault[1]= isMaterialUI || isClassicUI ? '#movie_player' : '#player .html5-video-player';
-        areaFocusDefault[2]= isMaterialUI ? '#masthead input#search' : '#masthead-search-term';
-        areaFocusDefault[3]= isMaterialUI ? '#items a.ytd-compact-video-renderer:first()' : '#watch7-sidebar-modules a.content-link:first()';
-        areaFocusDefault[4]= isMaterialUI ? '#info #menu #top-level-buttons button:last()' : '#watch8-action-buttons button:first()';
-        areaFocusDefault.length= 5;
+        areaFocusDefault[1]= '#movie_player';
+        areaFocusDefault[2]= '#masthead input#search';
+        areaFocusDefault[3]= '#items a.ytd-compact-video-renderer:first()';
+        areaFocusDefault[4]= '#info #menu #top-level-buttons button:last()';
     }
 
 
