@@ -255,6 +255,11 @@
   background-color: rgba(120, 180, 255, 0.6);
 }
 
+/* Hide the obstructive video suggestions in the embedded player when paused */
+.ytp-pause-overlay-container {
+  display: none;
+}
+
         `;
         document.head.appendChild(s);
     }
