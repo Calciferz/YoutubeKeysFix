@@ -251,11 +251,6 @@
 #player-container:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }
 .ytp-probably-keyboard-focus :focus { background-color: rgba(120, 180, 255, 0.6); }
 
-//html:not(.no-focus-outline) ytd-video-primary-info-renderer > #container > #info:focus-within,
-//html:not(.no-focus-outline) ytd-video-secondary-info-renderer > #container > #top-row:focus-within,
-//html:not(.no-focus-outline) ytd-video-secondary-info-renderer > #container > .description:focus-within
-//{ box-shadow: 0 0 10px 0px rgba(0,0,0,0.4); }
-
         `;
         document.head.appendChild(s);
     }
