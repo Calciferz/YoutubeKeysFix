@@ -34,8 +34,11 @@
     var subtitleContainer;
 
     var lastFocusedPageArea;
-    var areaOrder= [ null ], areaContainers= [ null ], areaFocusDefault= [ null ], areaFocusedSubelement= [ null ];
-    //var areaContainers= {}, areaFocusedSubelement= {};
+    var areaOrder= [ null ],
+        areaContainers= [ null ],
+        areaFocusDefault= [ null ],
+        areaFocusedSubelement= [ null ];
+
 
 
     function formatElemIdOrClass(elem) {
@@ -286,18 +289,35 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
 </style>');
     }
 
+
     function initDom() {
 
+        // Area names
+        areaOrder= [
+            null,
+            'player',
+            'header',
+            'videos',
+            'comments',
+        ];
+
         // Areas' root elements
-        areaOrder= [ null, 'player', 'masthead', 'videos', 'content' ];
-        areaContainers= [ null, 'player-container', 'masthead-container', 'related', 'sections' ];
+        areaContainers= [
+            null,
+            'player-container',    // player
+            'masthead-container',  // header
+            'related',   // videos
+            'sections',  // comments
+        ];
 
         // Areas' default element to focus
-        areaFocusDefault[0]= null;
-        areaFocusDefault[1]= '#movie_player';
-        areaFocusDefault[2]= '#masthead input#search';
-        areaFocusDefault[3]= '#items a.ytd-compact-video-renderer:first()';
-        areaFocusDefault[4]= '#info #menu #top-level-buttons button:last()';
+        areaFocusDefault= [
+            null,
+            '#movie_player',           // player
+            '#masthead input#search',  // header
+            '#items a.ytd-compact-video-renderer:first()',   // videos
+            '#info #menu #top-level-buttons button:last()',  // comments
+        ];
     }
 
 
