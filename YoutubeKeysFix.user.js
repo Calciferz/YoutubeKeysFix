@@ -263,15 +263,6 @@
 
 
 
-    function chainInitFunc(f1, f2) {
-        return (function() {
-            //$(document).ready(f1);
-            if (f1)  f1.apply(this, arguments);
-            if (f2)  f2.apply(this, arguments);
-        });
-    }
-
-
     function initEvents() {
         // Handlers are capture type to see all events before they are consumed
         document.addEventListener('mousedown', captureMouse, true);
@@ -371,6 +362,12 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
             return false;
         }
 
+        if (previousPlayerReadyCallback) {
+            try { previousPlayerReadyCallback.call(arguments); }
+            catch (err) { console.error("[YoutubeKeysFix]  initPlayer():  Original onYouTubePlayerReady():", previousPlayerReadyCallback, "threw error:", err); }
+            previousPlayerReadyCallback = null;
+        }
+
         //console.log("YoutubeKeysFix: initPlayer()");
         // Movie player frame (element) is focused when loading the page to get movie player keyboard controls.
         if (window.location.pathname === "/watch")  playerElem.focus();
@@ -380,9 +377,13 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
     }
 
 
-    //console.log("YoutubeKeysFix: loading, onYouTubePlayerReady=", window.onYouTubePlayerReady);
-    // Run init on onYouTubePlayerReady ('#movie_player' created).
-    window.onYouTubePlayerReady= chainInitFunc(initPlayer, window.onYouTubePlayerReady);
+    console.log("[YoutubeKeysFix]  loading:  onYouTubePlayerReady=", window.onYouTubePlayerReady);
+    // Run initPlayer() on onYouTubePlayerReady (#movie_player created)
+    let previousPlayerReadyCallback = window.onYouTubePlayerReady;
+    window.onYouTubePlayerReady = initPlayer;
+    //let playerReadyPromise = new Promise( function(resolve, reject) { window.onYouTubePlayerReady = resolve; } );
+    //playerReadyPromise.then( previousPlayerReadyCallback ).then( initPlayer );
+
     //initPlayer();
     initDom();
     initEvents();
