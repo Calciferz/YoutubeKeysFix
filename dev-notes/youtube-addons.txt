@@ -1,0 +1,2 @@
+https://greasyfork.org/en/scripts/16323-youtube-player-controls/code
+https://greasyfork.org/en/scripts/11485-youtube-ui-fix/code
