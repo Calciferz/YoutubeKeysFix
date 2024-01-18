@@ -176,8 +176,18 @@
           return handleShiftEsc(event);
         }
 
+        // Ignore redirected events to avoid recursion
+        if (event.originalEvent) {
+          return;
+        }
+
         // Only capture events within player
         if (!isElementWithin(event.target, playerElem))  return;
+
+        // End,Home,Up,Down -> scroll the page if not scrolled to the top
+        if (keyCode == 35 || keyCode == 36 || keyCode == 38 || keyCode == 40) {
+          if (0 < document.documentElement.scrollTop)  return redirectEventTo(document.body, event);
+        }
 
         // Sliders' key handling behaviour is inconsistent with the default player behaviour
         // Redirect arrow keys (33-40: PageUp,PageDown,End,Home,Left,Up,Right,Down) to page scroll/video player (position/volume)
