@@ -134,16 +134,19 @@
     function onKeydown(event) {
         // Debug log of key event
         //if (event.key != 'Shift')  console.log("[YoutubeKeysFix]  onKeydown():  type=" + event.type, "key='" + event.key + "' target=", [event.target, event]);
-
-        // event.target is the focused element (that received the keypress)
-        // event not received when fullscreen in Opera (already handled by browser)
-        if (event.which == 27)  return handleEsc(event);
     }
 
 
     function captureKeydown(event) {
         // Debug log of key event
         //if (event.key != 'Shift')  console.log("[YoutubeKeysFix]  captureKeydown():  type=" + event.type, "key='" + event.key + "' target=", [event.target, event]);
+
+        let keyCode = event.which;
+
+        // Shift-Esc -> cycle through search box, videos, comments
+        // Event is not received when fullscreen in Opera (already handled by browser)
+        if (keyCode == 27 && event.shiftKey)
+          return handleEsc(event);
 
         // Ignore events for the playerElem to avoid recursion
         //if (playerElem == document.activeElement)  return;
