@@ -271,13 +271,6 @@
         });
     }
 
-    // Run init on onYouTubePlayerReady ('#movie_player' created).
-    //console.log("YoutubeKeysFix: loading, onYouTubePlayerReady=", window.onYouTubePlayerReady);
-    window.onYouTubePlayerReady= chainInitFunc(initPlayer, window.onYouTubePlayerReady);
-    initEvents();
-    initStyle();
-    initDom();
-
 
     function initEvents() {
         // Handlers are capture type to see all events before they are consumed
@@ -385,6 +378,16 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
         $('#player .caption-window').attr('tabindex', '-1');
         //var caption= playerElem.querySelector && playerElem.querySelector('.caption-window');  if (caption)  caption.setAttribute('tabindex', -1);
     }
+
+
+    //console.log("YoutubeKeysFix: loading, onYouTubePlayerReady=", window.onYouTubePlayerReady);
+    // Run init on onYouTubePlayerReady ('#movie_player' created).
+    window.onYouTubePlayerReady= chainInitFunc(initPlayer, window.onYouTubePlayerReady);
+    //initPlayer();
+    initDom();
+    initEvents();
+    initStyle();
+
 
 })();
 
