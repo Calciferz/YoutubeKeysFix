@@ -1,6 +1,7 @@
 1.3.0:
 - Rename to "YouTube arrow keys FIX" from "Youtube key shortcuts FIX".
 - Remove code for old youtube (pre-2017, classic layout, abandoned by youtube in March 2020).
+- Remove broken styles.
 - Update download URL to 'main' branch.
 
 1.2.0:
