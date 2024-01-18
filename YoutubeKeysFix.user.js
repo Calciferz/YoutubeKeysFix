@@ -10,8 +10,6 @@
 // @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/main/YoutubeKeysFix.user.js
 // @icon         http://youtube.com/yts/img/favicon_32-vflOogEID.png
 // @match        *://*.youtube.com/*
-// @exclude      *://*.youtube.com/tv*
-// @exclude      *://*.youtube.com/live_chat*
 // @grant        none
 // @require      http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
