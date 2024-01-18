@@ -174,7 +174,7 @@
         var redirectSpace= 32 == event.which && !textbox;
         // Sliders' key handling behaviour is inconsistent with the default player behaviour. To disable them
         // arrowkey events (33-40: PageUp/PageDown/End/Home/Left/Up/Right/Down) are redirected to page scroll/video position/volume
-        var redirectArrows= 33 <= event.which && event.which <= 40 && event.target.getAttribute('role') == 'slider' && isSubelementOf(event.target, 'player');
+        var redirectArrows= 33 <= event.which && event.which <= 40 && event.target.getAttribute('role') == 'slider' && isSubelementOf(event.target, playerElem.id);
         if (redirectSpace || redirectArrows)  return redirectEvent(event);
     }
 
