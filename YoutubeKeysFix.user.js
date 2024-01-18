@@ -232,9 +232,9 @@
         // Passive event handler can call preventDefault() on wheel events to prevent scrolling the page
         //document.addEventListener('wheel', onWheel, { passive: false, capture: true });
 
-        // captureKeydown is run before original handlers to have a chance to modify the events
+        // captureKeydown is run before original handlers to capture key presses before the player does
         document.addEventListener('keydown', captureKeydown, true);
-        // onKeydown handles keypress in the bubbling phase to handle Esc if not handled by the focused element
+        // onKeydown handles Tab in the bubbling phase after other elements (textbox, button, link) got a chance.
         document.addEventListener('keydown', onKeydown);
 
         if (document.onfullscreenchange !== undefined)  document.addEventListener('fullscreenchange', onFullscreen);
