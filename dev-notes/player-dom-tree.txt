@@ -1,0 +1,79 @@
+$('#movie_player')
+
+
+movie_player - basic mode
+--
+ytd-page-manager#page-manager  >  ytd-watch-flexy.ytd-page-manager  >  div#columns
+>  div#primary  >  div#primary-inner
+>  div#player  >  div#player-container-outer  >  div#player-container-inner
+>> div#player-container  >  ytd-player#ytd-player  >  div#container
+>  div#movie_player.html5-video-player
+
+
+movie_player - theater mode
+--
+// Part of page load
+body  >  ytd-app  >  div#content  >  ytd-page-manager#page-manager
+// Created 1st step
+>  ytd-watch-flexy.ytd-page-manager
+>  div#full-bleed-container  >  div#player-full-bleed-container
+// Created 2nd step:
+>> div#player-container  >  ytd-player#ytd-player  >  div#container
+>  div#movie_player.html5-video-player  >  html5-video-container
+// Created 3rd step:
+>  video.html5-main-video
+
+
+movie_player - channel video
+--
+ytd-app  >  div#content.ytd-app
+>  ytd-page-manager
+>  ytd-browse.ytd-page-manager
+>  ytd-two-column-browse-results-renderer  >  div#primary.ytd-two-column-browse-results-renderer
+>  ytd-section-list-renderer   >  div#contents.ytd-section-list-renderer
+>  ytd-item-section-renderer  >  div#contents.ytd-item-section-renderer
+>  ytd-channel-video-player-renderer.ytd-item-section-renderer
+>> div#player-container  >  ytd-player#player  >  div#container
+
+
+
+
+Chapters, Playlist, Related videos
+--
+ytd-page-manager#page-manager  >  ytd-watch-flexy.ytd-page-manager  >  div#columns  >  div#secondary-inner
+  (all):  .style-scope.ytd-watch-flexy
+> div#panels
+  > ytd-engagement-panel-section-list-renderer[target-id=engagement-panel-ads]
+  > ytd-engagement-panel-section-list-renderer[target-id=engagement-panel-macro-markers-description-chapters]
+    > div#contents.ytd-macro-markers-list-renderer
+      >*  ytd-macro-markers-list-item-renderer  >  a#endpoint.yt-simple-endpoint
+  > ytd-engagement-panel-section-list-renderer[target-id=engagement-panel-clip-create]
+  > ytd-engagement-panel-section-list-renderer[target-id=engagement-panel-structured-description]
+  > ytd-engagement-panel-section-list-renderer[target-id=engagement-panel-comments-section]
+  > ytd-engagement-panel-section-list-renderer[target-id=engagement-panel-searchable-transcript]
+> ytd-playlist-panel-renderer#playlist  >  div#container.ytd-playlist-panel-renderer  >  div#items.playlist-items
+> div#chat-container
+> div#donation-shelf
+> div#related  >  ytd-watch-next-secondary-results-renderer  >  div#items  >  ytd-item-section-renderer  >  div#contents.ytd-item-section-renderer
+  >*  ytd-compact-video-renderer.ytd-item-section-renderer  >  div#dismissible.ytd-compact-video-renderer
+      >  div.details  >  div.metadata  >  a.yt-simple-endpoint
+
+
+
+movie_player classes
+--
+ytp-hide-controls
+ytp-autohide
+ytp-autohide-active
+
+
+
+
+title
+--
+#movie_player
+.ytp-chrome-top
+.ytp-title
+> .ytp-title-text
+
+

@@ -1,0 +1,59 @@
+1-onYouTubePlayerReady
+--
+VIDEO.video-stream.html5-main-video    tabindex= -1
+A.ytp-title-link.yt-uix-sessionlink.ytp-title-fullerscreen-link    tabindex= -1
+DIV.ytp-progress-bar    tabindex= 0
+DIV.ytp-fine-scrubbing-thumbnails    tabindex= 0
+DIV.ytp-volume-panel    tabindex= 0
+
+
+1-loaded
+--
+VIDEO.video-stream.html5-main-video    tabindex= -1
+A.ytp-title-link.yt-uix-sessionlink.ytp-title-fullerscreen-link    tabindex= -1
+DIV.ytp-ce-element.ytp-ce-channel.ytp-ce-channel-this.ytp-ce-medium-round.ytp-ce-top-left-quad.ytp-ce-size-1920    tabindex= 0
+A.ytp-ce-channel-title.ytp-ce-link    tabindex= -1
+DIV.ytp-ce-element.ytp-ce-video.ytp-ce-large-round.ytp-ce-bottom-right-quad.ytp-ce-size-1920    tabindex= 0
+A.ytp-ce-covering-overlay    tabindex= -1
+DIV.ytp-ce-element.ytp-ce-video.ytp-ce-large-round.ytp-ce-bottom-left-quad.ytp-ce-size-1920    tabindex= 0
+A.ytp-ce-covering-overlay    tabindex= -1
+
+
+1a
+--
+VIDEO.video-stream.html5-main-video
+A.ytp-title-link.yt-uix-sessionlink.ytp-title-fullerscreen-link
+DIV.ytp-ce-element.ytp-ce-channel.ytp-ce-channel-this.ytp-ce-medium-round.ytp-ce-top-left-quad.ytp-ce-size-1920
+A.ytp-ce-channel-title.ytp-ce-link
+DIV.ytp-ce-element.ytp-ce-video.ytp-ce-large-round.ytp-ce-bottom-right-quad.ytp-ce-size-1920
+A.ytp-ce-covering-overlay
+DIV.ytp-ce-element.ytp-ce-video.ytp-ce-large-round.ytp-ce-bottom-left-quad.ytp-ce-size-1920
+A.ytp-ce-covering-overlay
+BUTTON#efyt-options.ytp-button.ytp-efyt-button
+BUTTON#efyt-custom-script.ytp-button.ytp-efyt-button
+BUTTON#efyt-keyboard-shortcuts.ytp-button.ytp-efyt-button
+BUTTON#efyt-screenshot.ytp-button.ytp-efyt-button
+BUTTON#efyt-flip-vertically.ytp-button.ytp-efyt-button
+BUTTON#efyt-flip-horizontally.ytp-button.ytp-efyt-button
+BUTTON#efyt-video-filters.ytp-button.ytp-efyt-button
+BUTTON#efyt-speed-plus.ytp-button.ytp-efyt-button
+BUTTON#efyt-speed.ytp-button.ytp-efyt-button
+BUTTON#efyt-speed-minus.ytp-button.ytp-efyt-button
+BUTTON#efyt-pop-up-player.ytp-button.ytp-efyt-button
+BUTTON#efyt-size.ytp-button.ytp-efyt-button
+BUTTON#efyt-cinema-mode.ytp-button.ytp-efyt-button
+BUTTON#efyt-cards-end-screens.ytp-button.ytp-efyt-button
+BUTTON#efyt-not-interested.ytp-button.ytp-efyt-button
+BUTTON#efyt-whitelist.ytp-button.ytp-efyt-button
+
+
+2
+--
+DIV#caption-window-1.caption-window.ytp-caption-window-bottom.ytp-caption-window-rollup
+DIV.ytp-ce-element.ytp-ce-channel.ytp-ce-channel-this.ytp-ce-medium-round.ytp-ce-bottom-right-quad.ytp-ce-size-1920
+DIV.ytp-ce-element.ytp-ce-video.ytp-ce-large-round.ytp-ce-top-left-quad.ytp-ce-size-1920
+DIV.ytp-ce-element.ytp-ce-video.ytp-ce-large-round.ytp-ce-bottom-left-quad.ytp-ce-size-1920
+
+
+
+

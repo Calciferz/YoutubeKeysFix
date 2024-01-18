@@ -1,0 +1,56 @@
+#movie_player
+.html5-video-player
+.ytp-hide-info-bar .ytp-chrome-top .ytp-title
+
+.ytp-hide-info-bar .ytp-chrome-top {
+    height: 0;
+}
+.ytp-hide-info-bar .ytp-gradient-top,
+.ytp-hide-info-bar .ytp-chrome-top .ytp-back-button,
+.ytp-hide-info-bar .ytp-chrome-top .ytp-title-channel,
+.ytp-hide-info-bar .ytp-chrome-top .ytp-title,
+.ytp-hide-info-bar .ytp-chrome-top .ytp-playlist-menu-button,
+.ytp-hide-info-bar .ytp-chrome-top .ytp-watch-later-button,
+.ytp-hide-info-bar .ytp-chrome-top .ytp-share-button,
+.ytp-hide-info-bar .ytp-chrome-top .ytp-overflow-button,
+.ytp-hide-controls .ytp-gradient-bottom,
+.ytp-hide-controls .ytp-chrome-bottom {
+    display: none;
+}
+
+
+.ytp-autohide .ytp-playlist-menu-button,
+.ytp-autohide .ytp-back-button,
+.ytp-autohide .ytp-title-channel,
+.ytp-autohide .ytp-title,
+.ytp-autohide .ytp-chrome-top .ytp-watch-later-button,
+.ytp-autohide .ytp-chrome-top .ytp-share-button,
+.ytp-autohide .ytp-chrome-top .ytp-copylink-button,
+.ytp-autohide .ytp-chrome-top .ytp-search-button,
+.ytp-autohide:not(.ytp-cards-teaser-shown) .ytp-cards-button,
+.ytp-autohide .ytp-overflow-button,
+.ytp-autohide .ytp-chrome-bottom,
+.ytp-chrome-top[aria-hidden=true],
+.ytp-chrome-bottom[aria-hidden=true] {
+    opacity: 0;
+    -webkit-transition: opacity .1s cubic-bezier(.4,0,1,1);
+    transition: opacity .1s cubic-bezier(.4,0,1,1);
+}
+
+.ytp-autohide:not(.ytp-autohide-active) .ytp-playlist-menu-button,
+.ytp-autohide:not(.ytp-autohide-active) .ytp-back-button,
+.ytp-autohide:not(.ytp-autohide-active) .ytp-title-channel,
+.ytp-autohide:not(.ytp-autohide-active) .ytp-title,
+.ytp-autohide:not(.ytp-autohide-active) .ytp-chrome-top .ytp-watch-later-button,
+.ytp-autohide:not(.ytp-autohide-active) .ytp-chrome-top .ytp-share-button,
+.ytp-autohide:not(.ytp-autohide-active) .ytp-chrome-top .ytp-search-button,
+.ytp-autohide:not(.ytp-autohide-active):not(.ytp-cards-teaser-shown) .ytp-cards-button,
+.ytp-autohide:not(.ytp-autohide-active) .ytp-overflow-button {
+    display: none;
+}
+
+.ytp-share-button:not(.ytp-share-button-visible),
+.ytp-copylink-button:not(.ytp-copylink-button-visible),
+.ytp-overflow-button:not(.ytp-overflow-button-visible) {
+    display: none;
+}
