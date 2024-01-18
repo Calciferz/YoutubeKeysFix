@@ -219,7 +219,9 @@
         //console.log("[YoutubeKeysFix]  onMouse():  type=" + event.type, "button=" + event.button, "target=", [event.target, event]);
 
         // click outside of areas focuses player
-        if (0 === getAreaOf(event.target))  return redirectFocus(event, playerElem);
+        if (0 === getAreaOf(event.target)) {
+            return redirectFocus(event, playerElem);
+        }
     }
 
     function onWheel(event) {
@@ -260,7 +262,9 @@
         if (event.target === window)  return;
 
         // Focus player if focusing body (default focus, eg. pressing Esc)
-        if (event.target === document.body)  return redirectFocus(event, areaFocusedSubelement[1] || playerElem);
+        if (event.target === document.body) {
+            return redirectFocus(event, areaFocusedSubelement[1] || playerElem);
+        }
 
         // Save focused element inside player or on page
         var area= getAreaOf(event.target);
