@@ -137,6 +137,10 @@
         event.stopPropagation();
     }
 
+
+    // Tag list from YouTube Plus: https://github.com/ParticleCore/Particle/blob/master/src/Userscript/YouTubePlus.user.js#L885
+    var keyHandlingElements= { INPUT:1, TEXTAREA:1, IFRAME:1, OBJECT:1, EMBED:1 };
+
     function onKeydown(event) {
         // Debug log of key event
         //if (event.key != 'Shift')  console.log("YoutubeKeysFix: " + event.type + " " + event.which + " ->", event.target, event);
@@ -150,9 +154,6 @@
         if (event.which == 27)  return handleEsc(event);
     }
 
-
-    // Tag list from Youtube Plus: https://github.com/ParticleCore/Particle/blob/master/src/Userscript/YouTubePlus.user.js#L885
-    var keyHandlingElements= { INPUT:1, TEXTAREA:1, IFRAME:1, OBJECT:1, EMBED:1 };
 
     function captureKeydown(event) {
         // Debug log of key event
