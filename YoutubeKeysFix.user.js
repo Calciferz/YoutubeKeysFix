@@ -30,6 +30,7 @@
     var playerContainer;  // = document.getElementById('player-container') || document.getElementById('player') in embeds
     var playerElem;  // = document.getElementById('movie_player')
     var isMaterialUI, isClassicUI;
+    var isEmbeddedUI;
     var subtitleObserver;
     var subtitleContainer;
 
@@ -291,8 +292,6 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
         isClassicUI= (null !== document.getElementById('yt-masthead-container'));
         // MaterialUI has an extra  #player.skeleton > #player-api element, remnant of the classicUI, different from the one expected here
         // The one with the video:  ytd-watch > #top > #player > #player-container.ytd-watch (> #movie_player.html5-video-player)
-        playerContainer= isMaterialUI ? document.getElementById('player-container') : isClassicUI ? document.getElementById('player-api') : document.getElementById('player');
-        // isEmbeddedUI= !isMaterialUI && !isClassicUI;
 
         // Areas' root elements
         areaOrder= [ null, 'player', 'masthead', 'videos', 'content' ];
@@ -308,9 +307,15 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
         areaFocusDefault.length= 5;
     }
 
+
     function initPlayer() {
-        // The movie player frame '#movie_player', might not be generated yet.
-        playerElem= document.getElementById('movie_player') || $('#player .html5-video-player')[0];
+        // Path (on page load):  body  >  ytd-app  >  div#content  >  ytd-page-manager#page-manager
+        // Path (created 1st step):  >  ytd-watch-flexy.ytd-page-manager  >  div#full-bleed-container  >  div#player-full-bleed-container
+        // Path (created 2nd step):  >  div#player-container  >  ytd-player#ytd-player  >  div#container  >  div#movie_player.html5-video-player  >  html5-video-container
+        // Path (created 3rd step):  >  video.html5-main-video
+
+        // The movie player frame #movie_player is not part of the initial page load.
+        playerElem= document.getElementById('movie_player');
         if (! playerElem) {
             console.error("[YoutubeKeysFix]  initPlayer():  Failed to find #movie_player element: not created yet");
             return false;
@@ -321,6 +326,11 @@ html:not(.no-focus-outline) .related-list-item:focus-within .video-time-overlay 
             catch (err) { console.error("[YoutubeKeysFix]  initPlayer():  Original onYouTubePlayerReady():", previousPlayerReadyCallback, "threw error:", err); }
             previousPlayerReadyCallback = null;
         }
+
+        isEmbeddedUI= playerElem.classList.contains('ytp-embed');
+
+        playerContainer= document.getElementById('player-container')  // full-bleed-container > player-full-bleed-container > player-container > ytd-player > container > movie_player
+          || isEmbeddedUI && document.getElementById('player');  // body > player > movie_player.ytp-embed
 
         console.log("[YoutubeKeysFix]  initPlayer():  player=", [playerElem]);
 
