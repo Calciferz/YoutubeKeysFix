@@ -10,6 +10,7 @@
 // @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/main/YoutubeKeysFix.user.js
 // @icon         http://youtube.com/yts/img/favicon_32-vflOogEID.png
 // @include      https://*.youtube.com/*
+// @include      https://youtube.googleapis.com/embed*
 // @grant        none
 // @require      http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
