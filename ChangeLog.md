@@ -1,3 +1,5 @@
+1.3.0:
+
 1.2.0:
 - Title text is now selectable (fix weird issues when clicking).
 - Mouse wheel no longer controls the volume (and scrolls the page at the same time :-).
