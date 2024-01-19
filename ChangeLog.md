@@ -5,6 +5,7 @@
 - Remove code for old youtube (pre-2017, classic layout, abandoned by youtube in March 2020).
 - Remove broken styles.
 - Update download URL to 'main' branch.
+- Add optional userstyle: [youtube-usability-tweaks.user.css](youtube-usability-tweaks.user.css)
 
 1.2.0:
 - Title text is now selectable (fix weird issues when clicking).
