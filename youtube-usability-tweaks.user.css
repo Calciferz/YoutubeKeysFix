@@ -1,0 +1,32 @@
+/* ==UserStyle==
+@name         YouTube usability style tweaks
+@version      1.0.0
+@description  Usability tweaks
+@author       Calcifer
+@license      MIT
+@namespace    https://github.com/Calciferz
+@homepageURL  https://github.com/Calciferz/YoutubeKeysFix
+@supportURL   https://github.com/Calciferz/YoutubeKeysFix/issues
+@updateURL    https://github.com/Calciferz/YoutubeKeysFix/raw/main/youtube-usability-tweaks.user.css
+@preprocessor default
+==/UserStyle== */
+
+
+/*
+YouTube usability style tweaks
+
+To install:
+use a page styling addon like "Stylus":
+https://add0n.com/stylus.html
+or alternative:
+https://github.com/openstyles/stylus/wiki/Stylish-Alternatives
+or a YouTube addon like "Enhancer for YouTube".
+
+Customize as preferred.
+*/
+
+
+@-moz-document domain("youtube.com") {
+
+
+}
