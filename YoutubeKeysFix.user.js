@@ -179,7 +179,7 @@
     }
 
     function getFullscreen() {
-        return document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
     }
 
     function onFullscreen(event) {
