@@ -137,8 +137,6 @@
             if (window.location.pathname !== "/watch")  return;
             // Not in fullscreen
             if (getFullscreen())  return;
-            // show focus outline when navigating focus
-            document.documentElement.classList.remove('no-focus-outline');
             // Bring focus to next area
             focusNextArea();
         } else {
@@ -157,11 +155,6 @@
     function onKeydown(event) {
         // Debug log of key event
         //if (event.key != 'Shift')  console.log("[YoutubeKeysFix]  onKeydown():  type=" + event.type, "key='" + event.key + "' target=", [event.target, event]);
-        if (event.which == 9) {
-            // show focus outline when navigating focus
-            document.documentElement.classList.remove('no-focus-outline');
-            return;
-        }
 
         // event.target is the focused element (that received the keypress)
         // event not received when fullscreen in Opera (already handled by browser)
@@ -200,9 +193,6 @@
         // Called when mouse button is pressed/released over an element.
         // Debug log of mouse button event
         //console.log("[YoutubeKeysFix]  captureMouse():  type=" + event.type, "button=" + event.button, "target=", [event.target, event]);
-
-        // hide focus outline when clicking
-        document.documentElement.classList.add('no-focus-outline');
     }
 
 
