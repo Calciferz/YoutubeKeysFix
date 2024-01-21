@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         YouTube usability style tweaks
 @version      1.0.0
-@description  Usability tweaks: bigger font, hide video suggestions in embedded player
+@description  Usability tweaks: bigger font, video suggestion cards subtly pop out, hide video suggestions in embedded player
 @author       Calcifer
 @license      MIT
 @namespace    https://github.com/Calciferz
@@ -42,6 +42,48 @@ Customize as preferred.
   /* Smooth out weird transparency jump when scrolled to top */
   #masthead #background {
     transition: opacity 0.7s ease-out;
+  }
+
+
+
+  /* Video suggestion cards subtly pop out */
+  ytd-rich-grid-media, /* Main page, Channel Videos page, Channel Live page - videos */
+  ytd-rich-grid-slim-media, /* Main page, Channel Shorts page - shorts */
+  ytd-video-renderer, /* Channel Home page - first video */
+  ytd-grid-video-renderer, /* Channel Home page - videos */
+  ytd-reel-item-renderer, /* Channel Home page, Related videos - shorts */
+  ytd-grid-playlist-renderer, /* Channel Playlists page - playlists */
+  ytd-compact-video-renderer /* Related videos */ {
+    border-radius: 0.75em;
+    background-color: rgba(255, 100, 255, 4%);
+    /* box-shadow: 0 0 15px 5px rgba(0,0,100,0.2); */
+
+    /* Video suggestion cards are highlighted when moused or focused */
+    &:hover,
+    &:focus-within {
+      background-color: rgba(255, 100, 255, 20%);
+    }
+
+    /* Video suggestion cards' internal alignment is centered */
+    ytd-thumbnail {
+      align-self: center;
+      margin-inline: 2.5px;
+      margin-block: 3px;
+    }
+  }
+  /* Channel Home page, Related videos - shorts */
+  #details.ytd-reel-item-renderer {
+    margin: 0px 0px 5px 5px;
+  }
+  /* Channel Home page - videos */
+  #meta.ytd-grid-video-renderer {
+    margin: 5px;
+    margin-top: 0px;
+  }
+  /* Main page, Channel Videos page, Channel Live page - videos */
+  #details.ytd-rich-grid-media {
+    margin: 5px;
+    margin-top: 0px;
   }
 
 }
