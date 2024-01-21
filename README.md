@@ -13,8 +13,10 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-s
 
 ### Features
 
-#### Youtube player controls will work consistently when player is focused:
-- Left / Right (5sec backwards / forwards), Up / Down (volume up / down), Home (restart video), End (skip to end)
+#### YouTube player keyboard shortcuts will work consistently when player is focused:
+- Left,Right -> jump 5sec backwards / forwards
+- Home,End -> jump to video start / end
+- Up,Down -> volume up / down
 - 0-9 (jump to 0%-90%), C (switch closed captions/subtitles), +/- (change cc font size):  unaffected
 
 #### Player is focused right after pageload, no need to click in player frame:
@@ -22,19 +24,28 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-s
 - Press Esc to focus player, Shift-Esc to cycle search box, video list, like buttons / comments.
 - Space pauses video on the whole webpage except textboxes.
 
-#### Global shortcuts, changed:
-- Esc (exit fullscreen):  additionally focuses player when not in fullscreen
-- Space (play/pause):  works on whole page, not only when player is focused
+#### Global keyboard shortcuts, changed:
+- Esc -> focus player when not in fullscreen
+- Shift-Esc -> cycle search box, video list, like buttons / comments
+- Space -> play/pause on the whole page, not only when player is focused
 
-#### Global shortcuts, unaffected:
-- F (fullscreen), M (mute)
-- K (play/pause)
-- J / L (10sec backwards / forwards)
-- , (previous frame), . (next frame)
-- Shift-, (speed -0.25), Shift-. (speed +0.25)
-- Shift-N (next video), Shift-P (previous video)
-- / (focus searchfield, only in classic ui)
-- ENTER (push the focused button)
+#### Global keyboard shortcuts, unaffected:
+- K -> play/pause
+- C -> toggle closed captions (subtitles)
+- M -> mute
+- T -> theater mode
+- F -> fullscreen
+- +/- -> change subtitle font size
+- 0-9 -> jump to 0%-90%
+- J,L -> jump 10sec backwards / forwards
+- , -> previous frame (when paused)
+- . -> next frame (when paused)
+- Shift-, -> speed -0.25
+- Shift-. -> speed +0.25
+- Shift-N -> next video
+- Shift-P -> previous video
+- / -> focus searchfield
+- ENTER -> push the focused button
 
 #### Fixes the following awkward behaviour of YouTube player controls after clicking them (making the individual control focused):
 - After clicking the progressbar Up/Down will jump in the video instead of changing the volume.
