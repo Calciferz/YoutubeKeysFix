@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         YouTube usability style tweaks
 @version      1.0.0
-@description  Usability tweaks: bigger font, hide autoplay,miniplayer button, video suggestion cards subtly pop out, hide video suggestions in embedded player
+@description  Usability tweaks: bigger font, progressbar easier to click, hide autoplay,miniplayer button, video suggestion cards subtly pop out, hide video suggestions in embedded player
 @author       Calcifer
 @license      MIT
 @namespace    https://github.com/Calciferz
@@ -50,6 +50,40 @@ Customize as preferred.
   /* Smooth out weird transparency jump when scrolled to top */
   #masthead #background {
     transition: opacity 0.7s ease-out;
+  }
+
+
+
+  /* Progressbar mouse capture area is bigger */
+  .ytp-progress-bar-padding {
+    /* 5x bigger */
+    --height---normal: 50px; /* 10x */
+    --height---hover: 70px; /* 14x */
+    --bottom: calc( 50% - var(--height---normal) / 2 );
+    --bottom: -15px;
+    height: var(--height---normal);
+    /* background-color: #ffffff0c; */
+    transition: background 0.2s;
+  }
+  /* Progressbar mouse capture area is bigger once hovering */
+  .ytp-progress-bar-container:hover:not([aria-disabled=true]) .ytp-progress-bar-padding {
+    height: var(--height---hover);
+    background-color: #ffffff0c;
+  }
+  /* Progressbar mouse capture area is vertically centered */
+  .ytp-progress-bar-padding,
+  .ytp-progress-bar-container:hover:not([aria-disabled=true]) .ytp-progress-bar-padding {
+    bottom: var(--bottom);
+  }
+  /* Disable further increase of mouse capture area on the hovered chapter */
+  .ytp-drag .ytp-exp-chapter-hover-effect,
+  .ytp-progress-bar-container:hover:not([aria-disabled=true]) .ytp-exp-chapter-hover-effect,
+  .ytp-exp-chapter-hover-container:hover,
+  .ytp-progress-bar-container:hover:not([aria-disabled=true]).ytp-timed-markers-enabled .ytp-progress-list {
+    -webkit-transform: unset;
+    transform: unset;
+    -webkit-transition: unset;
+    transition: unset;
   }
 
 
