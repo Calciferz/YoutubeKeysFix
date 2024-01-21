@@ -17,12 +17,8 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-s
 - Left,Right -> jump 5sec backwards / forwards
 - Home,End -> jump to video start / end
 - Up,Down -> volume up / down
-- 0-9 (jump to 0%-90%), C (switch closed captions/subtitles), +/- (change cc font size):  unaffected
-
-#### Player is focused right after pageload, no need to click in player frame:
-- Click outside player frame to get standard page controls: Up, Down, Left, Right (scroll)
-- Press Esc to focus player, Shift-Esc to cycle search box, video list, like buttons / comments.
-- Space pauses video on the whole webpage except textboxes.
+- Player is focused right after pageload, no need to click in player frame.
+- Click outside player frame to scroll page.
 
 #### Global keyboard shortcuts, changed:
 - Esc -> focus player when not in fullscreen
