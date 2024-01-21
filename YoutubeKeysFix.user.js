@@ -7,7 +7,7 @@
 // @namespace    https://github.com/Calciferz
 // @homepageURL  https://github.com/Calciferz/YoutubeKeysFix
 // @supportURL   https://github.com/Calciferz/YoutubeKeysFix/issues
-// @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/master/YoutubeKeysFix.user.js
+// @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/main/YoutubeKeysFix.user.js
 // @icon         http://youtube.com/yts/img/favicon_32-vflOogEID.png
 // @match        *://*.youtube.com/*
 // @exclude      *://*.youtube.com/tv*
