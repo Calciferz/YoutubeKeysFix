@@ -40,6 +40,7 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-s
 - Shift-N -> next video
 - Shift-P -> previous video
 - / -> focus searchfield
+- ? -> show keyboard shortcuts
 - ENTER -> push the focused button
 
 #### Fixes the following awkward behaviour of YouTube player controls after clicking them (making the individual control focused):
