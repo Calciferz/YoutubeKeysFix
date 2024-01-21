@@ -37,12 +37,8 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-s
 - ENTER (push the focused button)
 
 #### Fixes the following awkward behaviour of Youtube player controls after clicking them (making the individual control focused):
-- after clicking the mute button Space toggles mute instead of pausing
 - after clicking the progressbar Up/Down will jump 10 sec in the video instead of changing the volume
 - after clicking the volume slider Left/Right will change the volume instead of jumping the video.
-- after clicking subtitle button Space will toggle subtitles
-- after clicking settings button Space will toggle settings
-- after clicking fullscreen button Space will toggle fullscreen
 
 #### YouTube keyboard shortcuts documentation:
 - https://shortcutworld.com/Youtube-Player/win/Youtube-Player_Shortcuts
