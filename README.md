@@ -1,14 +1,18 @@
-# Youtube key shortcuts FIX
-This is a userscript for web browsers
-- to fix inconsistent keyboard shortcuts of youtube,
+# YouTube key shortcuts FIX
+
+This is a userscript for web browsers to:
+- make YouTube keyboard controls (arrow keys) more intuitive,
+- fix annoyances like focusing volume slider and progressbar,
 - enable volume control by mousewheel scrolling over the player,
 - make Tab-navigation more user-friendly by visualizing focus on player, video list items, comments with frame shadow.
 
-[TamperMonkey](https://tampermonkey.net/) / [GreaseMonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (FireFox only)  addon enables your browser to use this and other userscripts.
-When you have one of these addons installed you can install the userscript from one of the active userscript collecting sites:
-- https://greasyfork.org/en/scripts/38643-youtube-key-shortcuts-fix
+Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-shortcuts-fix  
+[Installation instructions](#installation) below.
 
-### [Description](Description.md):
+
+
+### Features
+
 #### Youtube player controls will work consistently when player is focused:
 - Left / Right (5sec backwards / forwards), Up / Down (volume up / down), Home (restart video), End (skip to end)
 - 0-9 (jump to 0%-90%), C (switch closed captions/subtitles), +/- (change cc font size):  unaffected
@@ -45,3 +49,23 @@ When you have one of these addons installed you can install the userscript from 
 - https://www.hongkiat.com/blog/useful-youtube-keyboard-shortcuts-to-know/
 - https://support.google.com/youtube/answer/7631406?hl=en
 - 2010 (flash player?) - https://www.makeuseof.com/tag/comprehensive-guide-youtube-player-keyboard-shortcuts/
+
+
+
+### Installation
+
+Install an addon to manage userscripts, for example one of the following:
+- [Violentmonkey](https://violentmonkey.github.io/)
+- [FireMonkey](https://addons.mozilla.org/en-US/firefox/addon/firemonkey/) (FireFox only)
+- [Tampermonkey](https://www.tampermonkey.net/)
+- [GreaseMonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (FireFox only)
+
+Then install the userscript from the registry:
+- https://update.greasyfork.org/scripts/38643/Youtube%20key%20shortcuts%20FIX.user.js
+
+Or install directly from this repository:
+- https://github.com/Calciferz/YoutubeKeysFix/raw/main/YoutubeKeysFix.user.js
+
+For the latest in-development version install from the [`dev`](https://github.com/Calciferz/YoutubeKeysFix/tree/dev), branch (not guaranteed to be reliable):
+- https://github.com/Calciferz/YoutubeKeysFix/raw/dev/YoutubeKeysFix.user.js
+
