@@ -22,10 +22,9 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-s
 
 #### Global keyboard shortcuts, changed:
 - Esc -> focus player when not in fullscreen
-- Shift-Esc -> cycle search box, video list, like buttons / comments
-- Space -> play/pause on the whole page, not only when player is focused
 
 #### Global keyboard shortcuts, unaffected:
+- Space -> play/pause on the whole page, not only when player is focused
 - K -> play/pause
 - C -> toggle closed captions (subtitles)
 - M -> mute
