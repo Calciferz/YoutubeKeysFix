@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         YouTube usability style tweaks
 @version      1.0.0
-@description  Usability tweaks: bigger font, video suggestion cards subtly pop out, hide video suggestions in embedded player
+@description  Usability tweaks: bigger font, hide autoplay,miniplayer button, video suggestion cards subtly pop out, hide video suggestions in embedded player
 @author       Calcifer
 @license      MIT
 @namespace    https://github.com/Calciferz
@@ -32,6 +32,14 @@ Customize as preferred.
   ytd-text-inline-expander,
   #content-text.ytd-comment-renderer {
     font-size: 1.6rem;
+  }
+
+  /* Hide unused player buttons */
+  .ytp-chrome-controls .ytp-button[data-tooltip-target-id="ytp-autonav-toggle-button"] {
+    display: none;
+  }
+  .ytp-chrome-controls .ytp-button.ytp-miniplayer-button {
+    display: none;
   }
 
   /* Hide the obstructive video suggestions in the embedded player when paused */
