@@ -85,6 +85,30 @@ Customize as preferred.
   }
 
 
+  /* Progress bar thickness */
+  .ytp-progress-bar-container {
+    --height--progress-bar: 10px; /* 2x */
+    --height--progress-bar: 5px;  /* original */
+    height: var(--height--progress-bar);
+  }
+  /* Position dot sized relative to progress bar */
+  .ytp-scrubber-container {
+    --size: calc( var(--height--progress-bar) * 2 + 3px );
+    --size: calc( var(--height--progress-bar) * 1.5 + 5.5px );
+    --size: calc( var(--height--progress-bar) + 8px ); /* original: 13px, 2x: 18px */
+    height: var(--size);
+    width: var(--size);
+    /* Position dot is vertically centered */
+    top: calc( 50% - var(--size) / 2 );
+    left: calc( 0% - var(--size) / 2 );
+  }
+  .ytp-scrubber-button {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+
   /* Video suggestion cards subtly pop out */
   ytd-rich-grid-media, /* Main page, Channel Videos page, Channel Live page - videos */
   ytd-rich-grid-slim-media, /* Main page, Channel Shorts page - shorts */
