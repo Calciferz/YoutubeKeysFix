@@ -84,4 +84,13 @@ Customize as preferred.
     margin-top: 0px;
   }
 
+
+  /* Enhancer for Youtube addon's style fixes */
+  .ytd-watch-flexy:not(#engagement-panel-scrim) {
+    background-color: unset !important;
+  }
+  #columns#columns {
+    background-color: var(--main-background) !important;
+  }
+
 }
