@@ -9,7 +9,7 @@
 // @supportURL   https://github.com/Calciferz/YoutubeKeysFix/issues
 // @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/main/YoutubeKeysFix.user.js
 // @icon         http://youtube.com/yts/img/favicon_32-vflOogEID.png
-// @match        *://*.youtube.com/*
+// @include      https://*.youtube.com/*
 // @grant        none
 // @require      http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
