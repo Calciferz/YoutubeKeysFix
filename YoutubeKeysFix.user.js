@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Youtube key shortcuts FIX
+// @name         YouTube arrow keys FIX
 // @version      1.3.0
 // @namespace    https://github.com/Calciferz
 // @homepageURL  https://github.com/Calciferz/YoutubeKeysFix
