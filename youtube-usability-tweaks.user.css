@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         YouTube usability style tweaks
 @version      1.0.0
-@description  Usability tweaks: bigger font
+@description  Usability tweaks: bigger font, hide video suggestions in embedded player
 @author       Calcifer
 @license      MIT
 @namespace    https://github.com/Calciferz
@@ -31,6 +31,11 @@ Customize as preferred.
   /* Restore default 16px font-size. :root font-size is 10px */
   #content-text.ytd-comment-renderer {
     font-size: 1.6rem;
+  }
+
+  /* Hide the obstructive video suggestions in the embedded player when paused */
+  .ytp-pause-overlay-container {
+    display: none;
   }
 
 }
