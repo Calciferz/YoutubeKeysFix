@@ -36,9 +36,9 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-key-s
 - / (focus searchfield, only in classic ui)
 - ENTER (push the focused button)
 
-#### Fixes the following awkward behaviour of Youtube player controls after clicking them (making the individual control focused):
-- after clicking the progressbar Up/Down will jump 10 sec in the video instead of changing the volume
-- after clicking the volume slider Left/Right will change the volume instead of jumping the video.
+#### Fixes the following awkward behaviour of YouTube player controls after clicking them (making the individual control focused):
+- After clicking the progressbar Up/Down will jump in the video instead of changing the volume.
+- After clicking the volume slider Left/Right will change the volume instead of jumping in the video.
 
 #### YouTube keyboard shortcuts documentation:
 - https://shortcutworld.com/Youtube-Player/win/Youtube-Player_Shortcuts
