@@ -9,7 +9,6 @@
 // @supportURL   https://github.com/Calciferz/YoutubeKeysFix/issues
 // @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/master/YoutubeKeysFix.user.js
 // @icon         http://youtube.com/yts/img/favicon_32-vflOogEID.png
-// @copyright    2023, Calcifer (https://github.com/Calciferz)
 // @match        *://*.youtube.com/*
 // @exclude      *://*.youtube.com/tv*
 // @exclude      *://*.youtube.com/live_chat*
