@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube arrow keys FIX
 // @version      1.3.0
-// @description  Fix player controls Space, Left, Right, Up, Down to behave consistently after page load or clicking individual controls. Not focusing the mute button anymore.
+// @description  Fix YouTube keyboard controls (arrow keys) to be more consistent (Left,Right - jump, Up,Down - volume) after page load or clicking individual controls.
 // @author       Calcifer
 // @license      MIT
 // @namespace    https://github.com/Calciferz
