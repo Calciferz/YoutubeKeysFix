@@ -1,0 +1,29 @@
+greasyfork admin page
+===
+
+Publish from 'main' branch
+--
+This script's code is set up to sync from:
+https://github.com/Calciferz/YoutubeKeysFix/raw/main/YoutubeKeysFix.user.js
+Default additional info (language matches @name):
+https://github.com/Calciferz/YoutubeKeysFix/raw/main/README.md
+
+
+Publish from releases
+--
+This script's code is set up to sync from:
+https://github.com/Calciferz/YoutubeKeysFix/releases/latest/download/README.md
+Default additional info (language matches @name):
+https://github.com/Calciferz/YoutubeKeysFix/releases/latest/download/YoutubeKeysFix.user.js
+
+
+
+
+
+https://greasyfork.org/en/users/webhook-info
+===
+The sync URL you supply to Greasy Fork must be one of the following formats:
+
+- https://raw.githubusercontent.com/YourRepoName/YourProjectName/main/path/to/script.user.js
+- https://github.com/YourRepoName/YourProjectName/raw/main/path/to/script.user.js
+- https://github.com/YourRepoName/YourProjectName/releases/latest/download/path/to/script.user.js (only for release events)
