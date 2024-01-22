@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         YouTube arrow keys FIX
 // @version      1.3.0
+// @description  Fix player controls Space, Left, Right, Up, Down to behave consistently after page load or clicking individual controls. Not focusing the mute button anymore.
+// @author       Calcifer
+// @license      MIT
 // @namespace    https://github.com/Calciferz
 // @homepageURL  https://github.com/Calciferz/YoutubeKeysFix
 // @supportURL   https://github.com/Calciferz/YoutubeKeysFix/issues
 // @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/master/YoutubeKeysFix.user.js
-// @description  Fix player controls Space, Left, Right, Up, Down to behave consistently after page load or clicking individual controls. Not focusing the mute button anymore.
 // @icon         http://youtube.com/yts/img/favicon_32-vflOogEID.png
-// @author       Calcifer
-// @license      MIT
 // @copyright    2023, Calcifer (https://github.com/Calciferz)
 // @match        *://*.youtube.com/*
 // @exclude      *://*.youtube.com/tv*
