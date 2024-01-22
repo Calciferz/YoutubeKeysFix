@@ -38,4 +38,9 @@ Customize as preferred.
     display: none;
   }
 
+  /* Smooth out weird transparency jump when scrolled to top */
+  #masthead #background {
+    transition: opacity 0.7s ease-out;
+  }
+
 }
