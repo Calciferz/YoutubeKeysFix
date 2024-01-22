@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         YouTube usability style tweaks
 @version      1.0.0
-@description  Usability tweaks
+@description  Usability tweaks: bigger font
 @author       Calcifer
 @license      MIT
 @namespace    https://github.com/Calciferz
@@ -28,5 +28,9 @@ Customize as preferred.
 
 @-moz-document domain("youtube.com") {
 
+  /* Restore default 16px font-size. :root font-size is 10px */
+  #content-text.ytd-comment-renderer {
+    font-size: 1.6rem;
+  }
 
 }
