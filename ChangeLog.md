@@ -1,4 +1,5 @@
 1.3.1:
+- Remove jquery, load faster.
 
 1.3.0:
 - Rename to "YouTube arrow keys FIX" from "Youtube key shortcuts FIX".
