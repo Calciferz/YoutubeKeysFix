@@ -12,7 +12,6 @@
 // @include      https://*.youtube.com/*
 // @include      https://youtube.googleapis.com/embed*
 // @grant        none
-// @require      http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
 
 /* eslint-disable  no-multi-spaces */
