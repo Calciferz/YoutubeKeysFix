@@ -63,6 +63,11 @@
     }
     function getFocusedArea() { return getAreaOf(document.activeElement); }
 
+    // Source: jquery
+    function isVisible(elem) {
+        return !elem ? null : !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length );
+    }
+
     function tryFocus(newFocus) {
         newFocus= $(newFocus);
         if (! newFocus.length)  return null;
