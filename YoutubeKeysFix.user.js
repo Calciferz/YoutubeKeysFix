@@ -87,7 +87,7 @@
         let done = false;
         do {
           done= tryFocus( areaFocusedSubelement[nextArea] );
-          if (! done)  done= tryFocus( $(areaFocusDefault[nextArea]) );
+          if (! done)  done= tryFocus( document.querySelector( areaFocusDefault[nextArea] ) );
           //if (! done)  done= tryFocus( areaContainers[nextArea] );
           if (! done)  nextArea++;
         } while (!done && nextArea < areaContainers.length);
