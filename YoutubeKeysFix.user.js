@@ -243,8 +243,10 @@
 
 
     function initStyle() {
-        $(document.head).append(`
-<style name="yt-fix-materialUI" type="text/css">
+        let s= document.createElement('style');
+        s.name= 'YoutubeKeysFix-styles';
+        s.type= 'text/css';
+        s.textContent= `
 
 #player-container:focus-within { box-shadow: 0 0 20px 0px rgba(0,0,0,0.8); }
 .ytp-probably-keyboard-focus :focus { background-color: rgba(120, 180, 255, 0.6); }
@@ -257,8 +259,8 @@
 html:not(.no-focus-outline) ytd-compact-video-renderer #dismissable:focus-within { box-shadow: 0 0 15px 1px rgba(0,0,100,0.4); }
 a.yt-simple-endpoint.ytd-compact-video-renderer { margin-top: 3px; }
 
-</style>
-        `);
+        `;
+        document.head.appendChild(s);
     }
 
 
