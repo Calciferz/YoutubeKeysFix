@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YouTube arrow keys FIX
-// @version      1.3.0
+// @version      1.3.1
 // @description  Fix YouTube keyboard controls (arrow keys) to be more consistent (Left,Right - jump, Up,Down - volume) after page load or clicking individual controls.
 // @author       Calcifer
 // @license      MIT
