@@ -69,13 +69,12 @@
     }
 
     function tryFocus(newFocus) {
-        newFocus= $(newFocus);
-        if (! newFocus.length)  return null;
-        if (! newFocus.is(':visible()'))  return false;
+        if (!newFocus)  return null;
+        if (!isVisible(newFocus))  return false;
         //var oldFocus= document.activeElement;
         newFocus.focus();
-        var done= (newFocus[0] === document.activeElement);
-        if (! done)  console.error("[YoutubeKeysFix]  tryFocus():  Failed to focus newFocus=", [newFocus[0]], "activeElement=", [document.activeElement]);
+        var done= (newFocus === document.activeElement);
+        if (! done)  console.error("[YoutubeKeysFix]  tryFocus():  Failed to focus newFocus=", [newFocus], "activeElement=", [document.activeElement]);
         return done;
     }
 
