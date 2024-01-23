@@ -455,7 +455,7 @@ ytd-channel-video-player-renderer {
     }
 
 
-    console.log("[YoutubeKeysFix]  loading:  onYouTubePlayerReady=", window.onYouTubePlayerReady);
+    console.log("[YoutubeKeysFix]  loading:  version=" + GM_info.script.version,  "sandboxMode=" + GM_info.sandboxMode, "onYouTubePlayerReady=", window.onYouTubePlayerReady);
     // Run initPlayer() on onYouTubePlayerReady (#movie_player created)
     let previousPlayerReadyCallback = window.onYouTubePlayerReady;
     window.onYouTubePlayerReady = initPlayer;
