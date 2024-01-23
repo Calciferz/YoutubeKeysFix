@@ -100,9 +100,8 @@
 
 
     function redirectEventTo(target, event, cloneEvent) {
-        if (! target || ! $(target).is(':visible()'))  return;
+        if (!isVisible(target))  return;
         cloneEvent= cloneEvent || new Event(event.type);
-        //var cloneEvent= $.extend(cloneEvent, event);
         // shallow copy every property
         for (var k in event)  if (! (k in cloneEvent))  cloneEvent[k]= event[k];
         cloneEvent.originalEvent= event;
