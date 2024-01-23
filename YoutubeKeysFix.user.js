@@ -1,3 +1,5 @@
+/* eslint-disable  userscripts/use-download-and-update-url */
+/* -eslint-disable  userscripts/better-use-match  --  Is this a thing? */
 // ==UserScript==
 // @name         YouTube arrow keys FIX
 // @version      2.0.0
@@ -9,8 +11,8 @@
 // @supportURL   https://github.com/Calciferz/YoutubeKeysFix/issues
 // @downloadURL  https://github.com/Calciferz/YoutubeKeysFix/raw/main/YoutubeKeysFix.user.js
 // @icon         http://youtube.com/yts/img/favicon_32-vflOogEID.png
-// @include      https://*.youtube.com/*
-// @include      https://youtube.googleapis.com/embed*
+// @match        https://*.youtube.com/*
+// @match        https://youtube.googleapis.com/embed*
 // @grant        none
 // ==/UserScript==
 
