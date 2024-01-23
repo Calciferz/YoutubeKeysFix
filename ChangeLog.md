@@ -1,3 +1,5 @@
+1.3.1:
+
 1.3.0:
 - Rename to "YouTube arrow keys FIX" from "Youtube key shortcuts FIX".
 - Seekbar (when visible) gradient shadow is only as high as the seekbar instead of darkening the bottom 1/3 of the video.
