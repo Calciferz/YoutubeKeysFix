@@ -301,6 +301,24 @@ Customize as preferred.
 
 
 
+  /* Video thumbnail (shown before playback) fully covers video */
+  .ytp-cued-thumbnail-overlay {
+    z-index: 20;
+    display: unset !important;
+    transition: opacity 5s cubic-bezier(0,0,.2,1), visibility 5s;
+
+    .html5-video-player:not(.unstarted-mode) & {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  /* Horizontal video thumbnail centered when player is wider */
+  .ytd-page-manager:not([is-vertical-video_]) .ytp-cued-thumbnail-overlay-image {
+    background-size: contain;
+  }
+
+
+
   /* Enhancer for Youtube addon's style fixes */
   .ytd-watch-flexy:not(#engagement-panel-scrim) {
     background-color: unset !important;
