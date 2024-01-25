@@ -165,6 +165,15 @@ Customize as preferred.
     margin-top: 0px;
   }
 
+  /* No wasted margin around comments */
+  #columns#columns {
+    max-width: unset;
+    width: fit-content;
+  }
+  #primary#primary {
+    max-width: 120em;
+  }
+
 
   /* Enhancer for Youtube addon's style fixes */
   .ytd-watch-flexy:not(#engagement-panel-scrim) {
