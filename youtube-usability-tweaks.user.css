@@ -170,6 +170,61 @@ Customize as preferred.
   }
 
 
+
+  /** No wasted margins around content: page relayout **/
+
+  /* Page content */
+  #columns#columns {
+    max-width: unset;
+    /* width: fit-content; */
+    --margin--columns: var(--ytd-margin-12x);
+    --gap--columns: var(--ytd-margin-10x);
+    /* margin-inline: var(--margin--columns); */
+    column-gap: var(--gap--columns);
+    justify-content: center;
+
+    & > * {
+      padding: unset;
+      margin: unset;
+    }
+  }
+  /* Column 1 - #primary: video + description + comments */
+  #primary#primary {
+    max-width: unset;
+    flex: unset;
+    --max-width--comments: 1000px;
+    --max-width--comments: 1100px;
+    --max-width--description: calc( 2 * var(--max-width--comments) );
+    --width-base--primary: calc( 100vw - var(--ytd-watch-flexy-sidebar-width) - 2 * var(--margin--columns) - var(--gap--columns) );
+    --width--comments: min( var(--max-width--comments) , var(--width-base--primary) );
+    --min-width--player: var(--width--comments);
+    --max-width--player: min( var(--ytd-watch-flexy-max-player-width) * 2.5 , var(--ytd-watch-flexy-max-player-height) * 2.5 );
+    --width--player: clamp( var(--min-width--player) , var(--width-base--primary) , var(--max-width--player) );
+    --width--description: clamp( var(--width--comments) , var(--width--player) , var(--max-width--description) );
+  }
+  /* Below video: description + comments */
+  #below {
+    /* align-self: end; */
+    /* width: var(--width--comments); */
+  }
+  #below ytd-watch-metadata {
+    /* margin-inline: var(--ytd-margin-10x); */
+    --margin--description: 0px;
+    width: calc( var(--width--description) - 2 * var(--margin--description) );
+    margin: auto;
+
+    .ytd-page-manager[default-layout] & {
+      --margin--description: var(--gap--columns);
+    }
+  }
+  #below #comments {
+    width: var(--width--comments);
+    margin: auto;
+  }
+  /* Column 2 - #secondary: suggested videos */
+
+
+
   /* Enhancer for Youtube addon's style fixes */
   .ytd-watch-flexy:not(#engagement-panel-scrim) {
     background-color: unset !important;
