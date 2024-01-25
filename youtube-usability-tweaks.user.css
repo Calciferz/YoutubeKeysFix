@@ -235,6 +235,16 @@ Customize as preferred.
   }
 
 
+  /* Thumbnail (before play) covers video */
+  .ytp-cued-thumbnail-overlay {
+    z-index: 20;
+  }
+  /* Horizontal video thumbnail centered when player is wider */
+  .ytd-page-manager:not([is-vertical-video_]) .ytp-cued-thumbnail-overlay-image {
+    background-size: contain;
+  }
+
+
   /* Enhancer for Youtube addon's style fixes */
   .ytd-watch-flexy:not(#engagement-panel-scrim) {
     background-color: unset !important;
