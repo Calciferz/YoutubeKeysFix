@@ -55,11 +55,11 @@ Customize as preferred.
   /* Progressbar mouse capture area is bigger */
   .ytp-progress-bar-padding {
     /* 5x bigger */
-    --height---basic: 50px; /* 10x */
+    --height---normal: 50px; /* 10x */
     --height---hover: 70px; /* 14x */
-    --bottom: calc( 50% - var(--height---basic) / 2 );
+    --bottom: calc( 50% - var(--height---normal) / 2 );
     --bottom: -15px;
-    height: var(--height---basic);
+    height: var(--height---normal);
     /* background-color: #ffffff0c; */
     transition: background 0.2s;
   }
