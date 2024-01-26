@@ -319,6 +319,34 @@ Customize as preferred.
 
 
 
+  /* Move description's "Show less" button up: to the same position and size as the collapsed button that expands it */
+  ytd-text-inline-expander {
+    contain: unset;
+    overflow: visible;
+  }
+  #collapse.ytd-text-inline-expander {
+    color: mediumpurple;
+    font-size: 18px;
+    position: absolute;
+    height: 100px;
+    top: -30px;
+    left: -10px;
+    right: -10px;
+    margin-top: unset;
+    padding-top: 6px;
+    /* padding-left: 50%; */
+    align-items: start;
+    /* justify-content: end; */
+
+    &:focus-within,
+    &:hover {
+      background-color: rgb( from mediumpurple r g b / 20% );
+      background-color: rgb( 147 112 219 / 20% );
+    }
+  }
+
+
+
   /* Enhancer for Youtube addon's style fixes */
   .ytd-watch-flexy:not(#engagement-panel-scrim) {
     background-color: unset !important;
