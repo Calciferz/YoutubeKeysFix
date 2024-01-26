@@ -29,6 +29,7 @@ Customize as preferred.
 @-moz-document domain("youtube.com") {
 
   /* Restore default 16px font-size. :root font-size is 10px */
+  ytd-text-inline-expander,
   #content-text.ytd-comment-renderer {
     font-size: 1.6rem;
   }
