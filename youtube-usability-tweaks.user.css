@@ -336,9 +336,10 @@ Customize as preferred.
     color: mediumpurple;
     font-size: 18px;
     position: absolute;
-    height: 100px;
+    height: 30px;
     top: -30px;
-    left: -10px;
+    /* left: -10px; */
+    left: 50%;
     right: -10px;
     margin-top: unset;
     padding-top: 6px;
