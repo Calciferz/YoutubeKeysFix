@@ -237,6 +237,8 @@ Customize as preferred.
   }
   /* Level 8: Player frame size calculation */
   ytd-watch-flexy[flexy] #player {
+    /* margin same as secondary column: yt-chip-cloud-renderer:not([no-top-margin]) yt-chip-cloud-chip-renderer.yt-chip-cloud-renderer */
+    margin-top: var(--ytd-margin-2x);
     /* Height for video title and channel */
     --ytd-watch-flexy-space-below-player: 28px;
     --ytd-watch-flexy-space-below-player: calc(28px + 55px);
@@ -244,9 +246,15 @@ Customize as preferred.
     aspect-ratio: var(--ytd-watch-flexy-width-ratio) / var(--ytd-watch-flexy-height-ratio);
     /* max-height calculated from viewport - header - space below */
     width: var(--width--player);
-    min-height: calc( 0.5 * var(--width--comments) / ( var(--ytd-watch-flexy-width-ratio) / var(--ytd-watch-flexy-height-ratio) ) );
-    max-height: var(--ytd-watch-flexy-max-player-height);
-    max-height: calc(100vh - var(--ytd-watch-flexy-masthead-height) - var(--ytd-margin-3x) - var(--ytd-watch-flexy-space-below-player));
+    --height--for-aspect-ratio: calc( var(--width--player) / (var(--ytd-watch-flexy-width-ratio) / var(--ytd-watch-flexy-height-ratio)) );
+    --max-height: calc( 100vh - var(--ytd-watch-flexy-masthead-height) - var(--ytd-margin-3x) - var(--ytd-watch-flexy-space-below-player) );
+    --min-height: min( 0.5 * var(--width--comments) / ( var(--ytd-watch-flexy-width-ratio) / var(--ytd-watch-flexy-height-ratio) ) , var(--max-height) );
+    height: clamp( var(--min-height) , var(--height--for-aspect-ratio) , var(--max-height) );
+    /* height: min( max( var(--min-height) , var(--height--for-aspect-ratio) ), var(--max-height) ); */
+    /* clamp() is not correct for this, because clamp prefers the bigger result in case of conflict: if (min > max) then clamp=min
+    /* min-height: min( var(--min-height), var(--max-height) ); */
+    /* max-height: var(--max-height); */
+    /* max-height: var(--ytd-watch-flexy-max-player-height); */
   }
 
   /* Level 7: player-container-outer */
