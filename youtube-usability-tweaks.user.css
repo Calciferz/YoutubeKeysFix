@@ -353,6 +353,17 @@ Customize as preferred.
       background-color: rgb( 147 112 219 / 20% );
     }
   }
+  
+
+
+  /* Caption background is less transparent */
+  .ytp-caption-segment {
+    background-color: rgba(8, 8, 8, 0.5) !important;
+  }
+  /* Captions don't move up on mouse activity */
+  #movie_player .caption-window {
+    margin-bottom: unset;
+  }
 
 
 
