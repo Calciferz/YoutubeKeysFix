@@ -1,0 +1,28 @@
+  .ytp-cued-thumbnail-overlay-image {
+    /* For visibility: collapse on child */
+    display: flex;
+  }
+  .ytp-cued-thumbnail-overlay-image::after {
+    content: '';
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-size: contain;
+    background-color: #0f0f0f;
+    /* Cover .ytp-large-play-button */
+    z-index: 100;
+    /* Animate image sharpness on load */
+    filter: blur(10px);
+    animation: unblur 0.5s;
+    /* Fade out when loading is done */
+    opacity: 0;
+    visibility: collapse;
+    transition: all 1s;
+    transition-timing-function: cubic-bezier(0,0,.2,1);
+
+    #player:not(.theater) & {
+      /* top: var(--ytd-watch-flexy-masthead-height); */
+    }
+  }
+

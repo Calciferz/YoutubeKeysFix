@@ -309,22 +309,100 @@ Customize as preferred.
 
 
 
-  /* Video thumbnail (shown before playback) fully covers video */
-  .ytp-cued-thumbnail-overlay {
-    z-index: 20;
-    display: unset !important;
-    transition: opacity 5s cubic-bezier(0,0,.2,1), visibility 5s;
+  /* Hide controls while loading */
+  #player.skeleton {
+    & .ytp-large-play-button,
+    & .html5-video-player > *:not(.ytp-cued-thumbnail-overlay) {
+      display: none;
+    }
+  }
+  #masthead {
+    visibility: hidden;
+  }
+  #content.ytd-app:is( :has(#movie_player) , :has(> ytd-browse) ) #masthead {
+    visibility: unset;
+  }
+  /* Disable loading skeleton */
+  #watch-page-skeleton {
+    display: none;
+  }
+  ytd-masthead.shell {
+    display: none;
+  }
+  body {
+    overflow-y: scroll;
+  }
 
-    .html5-video-player:not(.unstarted-mode) & {
+
+  /* Fade in video thumbnail on page load */
+  .html5-video-player .ytp-cued-thumbnail-overlay {
+    transition: opacity 1s, visibility 1s;
+    opacity: 1;
+    /* z-index: 1000; */
+    display: unset !important;
+  }
+  .html5-video-player .html5-video-container {
+    transition: opacity 1s;
+    opacity: 0;
+  }
+  .html5-video-container,
+  .html5-video-player .ytp-cued-thumbnail-overlay {
+    transition-timing-function: cubic-bezier(0,0,.2,1), linear;
+  }
+  .html5-video-player:is(.playing-mode, .paused-mode, .ended-mode):not(.unstarted-mode) {
+    .html5-video-container {
+      opacity: 1;
+    }
+    .ytp-cued-thumbnail-overlay {
       opacity: 0;
       visibility: hidden;
     }
   }
   /* Horizontal video thumbnail centered when player is wider */
-  .ytd-page-manager:not([is-vertical-video_]) .ytp-cued-thumbnail-overlay-image {
+  .ytp-cued-thumbnail-overlay-image {
     background-size: contain;
   }
+  .ytd-page-manager[is-vertical-video_] .ytp-cued-thumbnail-overlay-image {
+    background-size: cover;
+  }
 
+
+  /* Fade in thumbnail (whole page) */
+  .ytp-cued-thumbnail-overlay-image {
+    background-color: #0f0f0f;
+    /* Animate image sharpness and opacity on load */
+    filter: blur(20px);
+    opacity: 0;
+    transition: filter 2s ease-in-out, opacity 2s ease-in-out;
+    /* animation: unblur 0.5s; */
+
+    @starting-style {
+      filter: blur(20px);
+      opacity: 0;
+    }
+    &[style*=background-image] {
+      opacity: 1;
+    }
+    #content.ytd-app & {
+      filter: blur(0px);
+    }
+  }
+
+  /* Animate play button when hovered */
+  .ytp-large-play-button {
+    transition: all 0.5s;
+    /* filter: drop-shadow(0px 0px 3px #212121); */
+    filter: drop-shadow(0px 0px 3px #700);
+  }
+  .ytp-large-play-button:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0px 0px 3px red);
+  }
+  .ytp-large-play-button .ytp-large-play-button-bg {
+    fill: #700;
+    fill-opacity: 0.7;
+    transition: fill 0.5s ease-in-out, fill-opacity 0.5s ease-in-out;
+  }
 
 
   /* Move description's "Show less" button up: to the same position and size as the collapsed button that expands it */
