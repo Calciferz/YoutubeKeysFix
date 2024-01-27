@@ -103,10 +103,10 @@
 
     function redirectEventTo(target, event, cloneEvent) {
         if (!isVisible(target))  return;
-        cloneEvent= cloneEvent || new Event(event.type);
-        // shallow copy every property
-        for (var k in event)  if (! (k in cloneEvent))  cloneEvent[k]= event[k];
+
+        cloneEvent= cloneEvent || new KeyboardEvent(event.type, event);
         cloneEvent.originalEvent= event;
+        if (target !== event.target)  cloneEvent.originalTarget= event.target;
 
         event.preventDefault();
         event.stopPropagation();
@@ -147,12 +147,34 @@
         let inTextbox= keyHandlingElements[event.target.tagName]  ||  event.target.isContentEditable;  //||  event.target.getAttribute('role') == 'textbox';
         // event.target is the focused element that received the keypress
 
+        // Ignore redirected events to avoid recursion
+        if (event.originalEvent) {
+          return;
+        }
+
         // Space -> pause video except when writing a comment - Youtube takes care of this
         //if (keyCode == 32)  redirect = !inTextbox;
-        //if (keyCode == 32)  return redirectEventTo(document.body, event);
+        if (keyCode == 32 && !inTextbox && event.target !== playerElem) {
+          return redirectEventTo(playerElem, event);
+        }
+        if (keyCode == 32 && !inTextbox && event.target !== document.body) {
+          return redirectEventTo(document.body, event);
+        }
 
         // Left,Right -> jump 5sec - Youtube takes care of this
         //if (keyCode == 37 || keyCode == 39)  redirect = !inTextbox;
+
+        // Alt[Gr]+Up,Down -> scroll the page
+        if ( event.altKey && (keyCode == 38 || keyCode == 40) ) {
+          let cloneEvent= new KeyboardEvent('keydown', { ...event, ctrlKey: false, altKey: false });
+          return redirectEventTo(document.body, event, cloneEvent);
+        }
+
+        // Ctrl+Up,Down -> volume
+        if ( event.ctrlKey && (keyCode == 38 || keyCode == 40) ) {
+          let cloneEvent= new KeyboardEvent('keydown', { ...event, ctrlKey: false });
+          return redirectEventTo(playerElem, event, cloneEvent);
+        }
 
         // End,Home,Up,Down -> control the player if page is scrolled to the top, otherwise scroll the page
         if (keyCode == 35 || keyCode == 36 || keyCode == 38 || keyCode == 40) {
@@ -182,6 +204,13 @@
         // Ignore redirected events to avoid recursion
         if (event.originalEvent) {
           return;
+        }
+
+        let inTextbox= keyHandlingElements[event.target.tagName]  ||  event.target.isContentEditable;  //||  event.target.getAttribute('role') == 'textbox';
+
+        // Space
+        if (keyCode == 32 && !inTextbox && event.target !== playerElem) {
+          return redirectEventTo(playerElem, event);
         }
 
         // Only capture events within player
@@ -219,9 +248,10 @@
 
         var deltaY= null !== event.deltaY ? event.deltaY : event.wheelDeltaY;
         var up= deltaY <= 0;    // null == 0 -> up
-        var cloneEvent= new Event('keydown');
-        cloneEvent.which= cloneEvent.keyCode= up ? 38 : 40;
-        cloneEvent.key= up ? 'ArrowUp': 'ArrowDown';
+        let options = { ...event };
+        options.which= options.keyCode= up ? 38 : 40;
+        options.key= up ? 'ArrowUp': 'ArrowDown';
+        let cloneEvent= new KeyboardEvent('keydown', options);
         redirectEventTo(playerElem, event, cloneEvent);
     }
 

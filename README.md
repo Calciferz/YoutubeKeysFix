@@ -17,6 +17,8 @@ Userscript registry page:  https://greasyfork.org/en/scripts/38643-youtube-arrow
 - Left,Right -> jump 5sec backwards / forwards
 - Home,End -> jump to video start / end - ONLY WHEN page is scrolled to top, otherwise scrolls page
 - Up,Down -> volume up / down - ONLY WHEN page is scrolled to top, otherwise scrolls page
+- Alt[Gr]+Up,Down -> scroll the page even if page is scrolled to top
+- Ctrl+Up,Down -> change volume even if page is scrolled to top
 - Can't be focused: video player, volume slider, progress bar, fine seeking bar, subtitle
 
 #### Global keyboard shortcuts, unaffected:

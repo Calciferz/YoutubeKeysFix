@@ -1,5 +1,6 @@
 2.0.0:
 - Up,Down (volume up / down), Home,End (jump to video start / end) ONLY WHEN page is scrolled to top, otherwise scrolls page.
+- Alt[Gr]+Up,Down -> scroll the page , Ctrl+Up,Down -> change volume even if page is scrolled to top.
 - Disable focusing video player.
 - Remove box-shadow under player.
 - Fix load failure on main page and channel pages.
