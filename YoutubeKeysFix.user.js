@@ -257,15 +257,6 @@
         s.type= 'text/css';
         s.textContent= `
 
-/* Add permanent box-shadow under player */
-/* #player-full-bleed-container */
-#player-container {
-  box-shadow: 0 0.5em 3em 0px rgba(0,0,0,0.7);
-}
-ytd-channel-video-player-renderer {
-  overflow: visible;
-}
-
 /* Highlight focused button in player */
 .ytp-probably-keyboard-focus :focus {
   background-color: rgba(120, 180, 255, 0.6);
