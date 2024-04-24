@@ -438,8 +438,8 @@
         // Subtitle container observer setup
         // #movie_player > #ytp-caption-window-container > .caption-window
         subtitleContainer = playerElem.querySelector('#ytp-caption-window-container');
-        if (!subtitleObserver && window.MutationObserver) {
-            subtitleObserver = new window.MutationObserver( mutationHandler );
+        if (!subtitleObserver) {
+            subtitleObserver = new MutationObserver( mutationHandler );
             // Observe movie_player because subtitle container is not created yet
             subtitleObserver.observe(subtitleContainer || playerElem, { childList: true, subtree: !subtitleContainer });
         }
