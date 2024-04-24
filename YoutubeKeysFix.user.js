@@ -25,6 +25,7 @@
 
     var playerContainer;  // = document.getElementById('player-container') || document.getElementById('player') in embeds
     var playerElem;  // = document.getElementById('movie_player')
+    var playerObserver;
     var isEmbeddedUI;
     var subtitleObserver;
     var subtitleContainer;
@@ -340,24 +341,33 @@
     }
 
 
+    function observePlayer() {
+        // The movie player frame #movie_player is not part of the initial page load.
+        playerElem= document.getElementById('movie_player');
+        if (playerElem)  return initPlayer();
+
+        // Player elem observer setup
+        playerObserver = new MutationObserver( mutationHandler );
+        playerObserver.observe(document.body, { childList: true, subtree: true });
+
+        function mutationHandler(mutations, observer) {
+            playerElem= document.getElementById('movie_player');
+            if (!playerElem)  return;
+
+            console.log("[YoutubeKeysFix]  mutationHandler():  #movie_player created, stopped observing body", [playerElem]);
+            // Stop playerObserver
+            observer.disconnect();
+
+            initPlayer();
+        }
+    }
+
     function initPlayer() {
-        // Path (on page load):  body  >  ytd-app  >  div#content  >  ytd-page-manager#page-manager
+        // Path (on page load):  body  >  ytd-app
+        // Path (DOMContentLoaded):  >  div#content  >  ytd-page-manager#page-manager
         // Path (created 1st step):  >  ytd-watch-flexy.ytd-page-manager  >  div#full-bleed-container  >  div#player-full-bleed-container
         // Path (created 2nd step):  >  div#player-container  >  ytd-player#ytd-player  >  div#container  >  div#movie_player.html5-video-player  >  html5-video-container
         // Path (created 3rd step):  >  video.html5-main-video
-
-        // The movie player frame #movie_player is not part of the initial page load.
-        playerElem= document.getElementById('movie_player');
-        if (! playerElem) {
-            console.error("[YoutubeKeysFix]  initPlayer():  Failed to find #movie_player element: not created yet");
-            return false;
-        }
-
-        if (previousPlayerReadyCallback) {
-            try { previousPlayerReadyCallback.call(arguments); }
-            catch (err) { console.error("[YoutubeKeysFix]  initPlayer():  Original onYouTubePlayerReady():", previousPlayerReadyCallback, "threw error:", err); }
-            previousPlayerReadyCallback = null;
-        }
 
         isEmbeddedUI= playerElem.classList.contains('ytp-embed');
 
@@ -447,16 +457,12 @@
 
 
     console.log("[YoutubeKeysFix]  loading:  version=" + GM_info.script.version,  "sandboxMode=" + GM_info.sandboxMode, "onYouTubePlayerReady=", window.onYouTubePlayerReady);
-    // Run initPlayer() on onYouTubePlayerReady (#movie_player created)
-    let previousPlayerReadyCallback = window.onYouTubePlayerReady;
-    window.onYouTubePlayerReady = initPlayer;
-    //let playerReadyPromise = new Promise( function(resolve, reject) { window.onYouTubePlayerReady = resolve; } );
-    //playerReadyPromise.then( previousPlayerReadyCallback ).then( initPlayer );
 
-    //initPlayer();
     initDom();
     initEvents();
     initStyle();
+    // Run initPlayer() when #movie_player is created
+    observePlayer();
 
 
 })();

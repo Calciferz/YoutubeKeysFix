@@ -2,6 +2,7 @@
 - Up,Down (volume up / down), Home,End (jump to video start / end) ONLY WHEN page is scrolled to top, otherwise scrolls page.
 - Disable focusing video player.
 - Remove box-shadow under player.
+- Fix load failure on main page and channel pages.
 
 1.3.1:
 - Remove jquery, load faster.
